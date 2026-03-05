@@ -55,24 +55,22 @@
     #overlay{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.88);border:2px solid #ffd700;border-radius:12px;padding:22px 34px;text-align:center;z-index:30;min-width:240px;}
     #overlay h2{color:#ffd700;margin-bottom:8px;font-size:1.3rem;}
     #overlay p{color:#ddd;margin-bottom:14px;font-size:.9rem;line-height:1.5;}
+    #kb-help{font-size:.62rem;color:#555;margin-top:4px;letter-spacing:.5px;display:none;}
 
     /* COACH PANEL */
     #coach-panel{width:400px;min-width:400px;background:#111122;border:1px solid rgba(255,215,0,.25);border-radius:12px;display:flex;flex-direction:column;max-height:700px;overflow-y:auto;flex-shrink:0;}
     #coach-panel::-webkit-scrollbar{width:5px;}#coach-panel::-webkit-scrollbar-track{background:#111;}#coach-panel::-webkit-scrollbar-thumb{background:#333;}
     .coach-hdr{background:linear-gradient(135deg,#1a3a1a,#0d2b0d);border-bottom:1px solid rgba(255,215,0,.3);padding:10px 16px;display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:bold;color:#ffd700;position:sticky;top:0;z-index:5;}
     .coach-hdr span{font-size:1.2rem;}
-    /* Difficulty toggle */
     .diff-toggle{display:flex;gap:4px;margin-left:auto;}
     .diff-btn{padding:2px 10px;border:1px solid rgba(255,215,0,.25);border-radius:10px;background:transparent;color:#666;font-size:.68rem;cursor:pointer;transition:all .15s;font-family:Georgia,serif;}
     .diff-btn.active{background:rgba(255,215,0,.12);color:#ffd700;border-color:rgba(255,215,0,.5);}
     .diff-btn:hover{color:#bbb;}
-    /* Stats bar */
     #stats-bar{display:flex;gap:0;padding:6px 0;background:#0c0c1e;border-bottom:1px solid rgba(255,215,0,.1);flex-shrink:0;}
     .stat-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;border-right:1px solid rgba(255,255,255,.06);}
     .stat-item:last-child{border-right:none;}
     .stat-val{font-size:.9rem;font-weight:bold;color:#ffd700;}
     .stat-lbl{color:#555;font-size:.6rem;text-transform:uppercase;letter-spacing:.5px;}
-    /* Coach idle/body */
     #coach-idle{padding:20px 16px;color:#888;font-size:.85rem;text-align:center;line-height:1.6;}
     #coach-body{padding:0 0 12px;}
     .csec{border-bottom:1px solid rgba(255,255,255,.07);padding:10px 14px;}
@@ -84,12 +82,10 @@
     .sbar{flex:1;height:7px;background:#222;border-radius:4px;overflow:hidden;}
     .sbar-fill{height:100%;border-radius:4px;transition:width .4s;}
     .sbar-label{font-size:.72rem;color:#aaa;white-space:nowrap;}
-    /* scenario box */
     #c-scenario{background:rgba(255,215,0,.05);border-left:3px solid #ffd700 !important;border-bottom:1px solid rgba(255,215,0,.2) !important;}
     .sc-name{font-size:.95rem;font-weight:bold;color:#ffd700;margin-bottom:4px;}
     .sc-concept{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:10px;background:rgba(255,215,0,.12);color:#ffd700;border:1px solid rgba(255,215,0,.25);margin-bottom:6px;}
     .sc-lesson{font-size:.8rem;color:#ccc;line-height:1.55;}
-    /* rec box */
     #c-rec{background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.25);}
     .rec-action{font-size:1.1rem;font-weight:bold;margin-bottom:6px;}
     .rec-fold{color:#ff6666;}.rec-check{color:#88dd88;}.rec-call{color:#66aaff;}.rec-raise{color:#ffaa44;}.rec-allin{color:#dd88ff;}
@@ -98,15 +94,12 @@
     .pill-good{background:rgba(0,200,100,.15);color:#00dd88;border:1px solid rgba(0,200,100,.3);}
     .pill-warn{background:rgba(255,180,0,.12);color:#ffcc44;border:1px solid rgba(255,180,0,.25);}
     .pill-bad{background:rgba(255,60,60,.12);color:#ff6666;border:1px solid rgba(255,60,60,.25);}
-    /* Stage advice */
     .stage-box{padding:7px 10px;border-radius:6px;font-size:.8rem;line-height:1.55;}
     .stage-hu{background:rgba(255,80,50,.08);border:1px solid rgba(255,80,50,.25);}
     .stage-sh{background:rgba(255,200,0,.07);border:1px solid rgba(255,200,0,.2);}
     .stage-escalate{background:rgba(255,150,0,.07);border:1px solid rgba(255,150,0,.22);}
-    /* Bluff tips */
     .bluff-tip{background:rgba(255,140,0,.07);border:1px solid rgba(255,140,0,.2);border-radius:6px;padding:7px 10px;margin-bottom:6px;font-size:.8rem;line-height:1.5;}
     .bluff-tip:last-child{margin-bottom:0;}
-    /* Hand history */
     #history-section{border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;}
     #history-toggle{padding:8px 14px;cursor:pointer;font-size:.75rem;color:#666;display:flex;justify-content:space-between;align-items:center;transition:color .15s;user-select:none;}
     #history-toggle:hover{color:#ffd700;}
@@ -115,6 +108,26 @@
     .hist-item:last-child{border-bottom:none;}
     .hist-win{color:#44cc88;font-weight:bold;}
     .hist-lose{color:#cc5544;}
+    /* Side pot display */
+    #side-pots{font-size:.68rem;color:#aaa;min-height:0;margin-top:2px;}
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 980px) {
+      #layout{flex-direction:column;align-items:center;}
+      #coach-panel{width:100%;min-width:unset;max-width:700px;max-height:500px;}
+    }
+    @media (max-width: 740px) {
+      body{padding:6px 4px;}
+      h1{font-size:1rem;margin-bottom:4px;}
+      #left-col{transform:scale(0.55);transform-origin:top center;height:320px;margin-bottom:-10px;}
+      #coach-panel{max-width:100%;border-radius:8px;max-height:400px;}
+      #kb-help{display:none !important;}
+    }
+    @media (max-width: 480px) {
+      #left-col{transform:scale(0.4);transform-origin:top center;height:235px;}
+      #coach-panel{font-size:.9rem;max-height:350px;}
+      .csec{padding:8px 10px;}
+    }
   </style>
 </head>
 <body>
@@ -125,7 +138,11 @@
     <div id="table">
       <div id="community">
         <div id="comm-cards"></div>
-        <div id="pot-box"><div id="pot-val">Pot: $0</div><div id="bet-val"></div></div>
+        <div id="pot-box">
+          <div id="pot-val">Pot: $0</div>
+          <div id="bet-val"></div>
+          <div id="side-pots"></div>
+        </div>
       </div>
     </div>
     <div class="player-area" id="pa-0">
@@ -158,6 +175,7 @@
       <div id="btns">
         <button class="btn btn-start" id="btn-start" onclick="startGame()">Deal Cards</button>
       </div>
+      <div id="kb-help">F fold &middot; C check/call &middot; R raise &middot; A all-in</div>
     </div>
     <div id="overlay">
       <h2 id="ov-title">Winner!</h2>
@@ -186,965 +204,1555 @@
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════
-// CONSTANTS & CARD HELPERS
-// ═══════════════════════════════════════════════════════════════════
-const SYM={spades:'♠',hearts:'♥',diamonds:'♦',clubs:'♣'};
-const VN={2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',10:'10',11:'J',12:'Q',13:'K',14:'A'};
-const VNAME={2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',11:'Jack',12:'Queen',13:'King',14:'Ace'};
-const PNAME={2:'Twos',3:'Threes',4:'Fours',5:'Fives',6:'Sixes',7:'Sevens',8:'Eights',9:'Nines',10:'Tens',11:'Jacks',12:'Queens',13:'Kings',14:'Aces'};
-const HN=['High Card','One Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush'];
-// Dynamic blinds — escalate every 5 hands
-const BLIND_SCHEDULE=[[10,20],[15,30],[25,50],[40,80],[75,150],[100,200]];
-let CUR_SB=10,CUR_BB=20;
-// card shorthand: c(14,'s') → {value:14,suit:'spades'}
-const SUIT={'s':'spades','h':'hearts','d':'diamonds','c':'clubs'};
-const c=(v,s)=>({value:v,suit:SUIT[s]});
+'use strict';
 
-// ═══════════════════════════════════════════════════════════════════
+// =====================================================================
+// CONSTANTS & CARD HELPERS
+// =====================================================================
+const SUIT_SYMBOLS = { spades: '\u2660', hearts: '\u2665', diamonds: '\u2666', clubs: '\u2663' };
+const VALUE_SHORT  = { 2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',10:'10',11:'J',12:'Q',13:'K',14:'A' };
+const VALUE_NAME   = { 2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',11:'Jack',12:'Queen',13:'King',14:'Ace' };
+const PLURAL_NAME  = { 2:'Twos',3:'Threes',4:'Fours',5:'Fives',6:'Sixes',7:'Sevens',8:'Eights',9:'Nines',10:'Tens',11:'Jacks',12:'Queens',13:'Kings',14:'Aces' };
+const HAND_NAMES   = ['High Card','One Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush'];
+const SUIT_KEY     = { s: 'spades', h: 'hearts', d: 'diamonds', c: 'clubs' };
+const PLAYER_COUNT = 4;
+const STARTING_CHIPS = 1000;
+const BLIND_SCHEDULE = [[10,20],[15,30],[25,50],[40,80],[75,150],[100,200]];
+const HANDS_PER_BLIND_LEVEL = 5;
+
+let CUR_SB = 10;
+let CUR_BB = 20;
+
+// Shorthand for scenario card definitions
+function c(v, s) { return { value: v, suit: SUIT_KEY[s] }; }
+
+// HTML-escape for safe innerHTML insertion
+function esc(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// =====================================================================
 // EDUCATIONAL SCENARIOS
-// ═══════════════════════════════════════════════════════════════════
+// =====================================================================
 const SCENARIOS = [
   {
-    id:'pocket_jacks',
-    name:'Pocket Jacks — The Problem Hand',
-    concept:'Knowing When to Fold an Overpair',
-    lesson:'Jacks are the 4th best starting hand, yet they\'re the most misplayed hand in poker. When an Ace or King hits the flop, your overpair is often crushed. The lesson: discipline to fold a "good" hand when the math demands it.',
-    humanHole:[c(11,'h'),c(11,'s')],
-    oppHole:[c(14,'c'),c(13,'d')],
-    community:[c(14,'h'),c(7,'c'),c(2,'d'),c(13,'s'),c(5,'h')],
+    id: 'pocket_jacks',
+    name: 'Pocket Jacks \u2014 The Problem Hand',
+    concept: 'Knowing When to Fold an Overpair',
+    lesson: 'Jacks are the 4th best starting hand, yet they\'re the most misplayed hand in poker. When an Ace or King hits the flop, your overpair is often crushed. The lesson: discipline to fold a "good" hand when the math demands it.',
+    humanHole: [c(11,'h'), c(11,'s')],
+    oppHole: [c(14,'c'), c(13,'d')],
+    community: [c(14,'h'), c(7,'c'), c(2,'d'), c(13,'s'), c(5,'h')],
   },
   {
-    id:'flush_draw',
-    name:'Flush Draw — Pot Odds in Action',
-    concept:'9 Outs, Rule of 4, Semi-Bluffing',
-    lesson:'You have 9 outs to a flush (~36% by river via Rule of 4). The core skill: calculating whether the pot is paying you enough to call — or whether to semi-bluff raise and take down the pot now.',
-    humanHole:[c(13,'h'),c(10,'h')],
-    oppHole:[c(14,'d'),c(14,'s')],
-    community:[c(14,'h'),c(8,'h'),c(3,'c'),c(5,'s'),c(7,'h')],
+    id: 'flush_draw',
+    name: 'Flush Draw \u2014 Pot Odds in Action',
+    concept: '9 Outs, Rule of 4, Semi-Bluffing',
+    lesson: 'You have 9 outs to a flush (~36% by river via Rule of 4). The core skill: calculating whether the pot is paying you enough to call \u2014 or whether to semi-bluff raise and take down the pot now.',
+    humanHole: [c(13,'h'), c(10,'h')],
+    oppHole: [c(14,'d'), c(14,'s')],
+    community: [c(14,'h'), c(8,'h'), c(3,'c'), c(5,'s'), c(7,'h')],
   },
   {
-    id:'oesd',
-    name:'Open-Ended Straight Draw — 8 Outs',
-    concept:'Straight Draws, Counting Outs, Pot Odds',
-    lesson:'Four consecutive cards let you complete a straight from either end — 8 outs, ~32% equity. Unlike the weak gutshot (4 outs), this draw is strong enough to call or even raise in the right spot.',
-    humanHole:[c(9,'s'),c(10,'d')],
-    oppHole:[c(14,'c'),c(14,'h')],
-    community:[c(8,'h'),c(11,'c'),c(3,'d'),c(2,'s'),c(7,'h')],
+    id: 'oesd',
+    name: 'Open-Ended Straight Draw \u2014 8 Outs',
+    concept: 'Straight Draws, Counting Outs, Pot Odds',
+    lesson: 'Four consecutive cards let you complete a straight from either end \u2014 8 outs, ~32% equity. Unlike the weak gutshot (4 outs), this draw is strong enough to call or even raise in the right spot.',
+    humanHole: [c(9,'s'), c(10,'d')],
+    oppHole: [c(14,'c'), c(14,'h')],
+    community: [c(8,'h'), c(11,'c'), c(3,'d'), c(2,'s'), c(7,'h')],
   },
   {
-    id:'set_mining',
-    name:'Set Mining — Hidden Strength',
-    concept:'Flopping a Set, Slow Play vs. Fast Play',
-    lesson:'Small pairs have just ~11.8% chance to flop a set, but when they do, it\'s a disguised monster. The question becomes: fast play to build the pot, or slow play to trap? Alice has top pair top kicker and doesn\'t know she\'s crushed.',
-    humanHole:[c(7,'c'),c(7,'d')],
-    oppHole:[c(14,'h'),c(13,'s')],
-    community:[c(7,'h'),c(14,'d'),c(9,'c'),c(5,'s'),c(2,'h')],
+    id: 'set_mining',
+    name: 'Set Mining \u2014 Hidden Strength',
+    concept: 'Flopping a Set, Slow Play vs. Fast Play',
+    lesson: 'Small pairs have just ~11.8% chance to flop a set, but when they do, it\'s a disguised monster. The question becomes: fast play to build the pot, or slow play to trap? Alice has top pair top kicker and doesn\'t know she\'s crushed.',
+    humanHole: [c(7,'c'), c(7,'d')],
+    oppHole: [c(14,'h'), c(13,'s')],
+    community: [c(7,'h'), c(14,'d'), c(9,'c'), c(5,'s'), c(2,'h')],
   },
   {
-    id:'monster_draw',
-    name:'The Monster Draw — 15 Outs',
-    concept:'Combo Draw, Equity Favorite, Semi-Bluff',
-    lesson:'When you have both a flush draw AND an open-ended straight draw, you have ~15 outs — that\'s 54% equity by the river. You\'re actually the FAVORITE. Most players check and pray; the right play is to bet aggressively.',
-    humanHole:[c(11,'h'),c(10,'h')],
-    oppHole:[c(14,'c'),c(14,'d')],
-    community:[c(9,'h'),c(12,'h'),c(3,'c'),c(8,'s'),c(2,'h')],
+    id: 'monster_draw',
+    name: 'The Monster Draw \u2014 15 Outs',
+    concept: 'Combo Draw, Equity Favorite, Semi-Bluff',
+    lesson: 'When you have both a flush draw AND an open-ended straight draw, you have ~15 outs \u2014 that\'s 54% equity by the river. You\'re actually the FAVORITE. Most players check and pray; the right play is to bet aggressively.',
+    humanHole: [c(11,'h'), c(10,'h')],
+    oppHole: [c(14,'c'), c(14,'d')],
+    community: [c(9,'h'), c(12,'h'), c(3,'c'), c(8,'s'), c(2,'h')],
   },
   {
-    id:'big_slick',
-    name:'Ace-King (Big Slick) — Top Pair, Top Kicker',
-    concept:'TPTK, Value Betting, Kicker Advantage',
-    lesson:'AK is just Ace-high before the flop, but when an Ace hits, you have top pair + top kicker (TPTK) — the best possible one-pair hand. You beat all other Ax hands. Learn to bet for value without fear.',
-    humanHole:[c(14,'s'),c(13,'h')],
-    oppHole:[c(14,'c'),c(9,'d')],
-    community:[c(14,'h'),c(7,'d'),c(3,'c'),c(10,'s'),c(5,'h')],
+    id: 'big_slick',
+    name: 'Ace-King (Big Slick) \u2014 Top Pair, Top Kicker',
+    concept: 'TPTK, Value Betting, Kicker Advantage',
+    lesson: 'AK is just Ace-high before the flop, but when an Ace hits, you have top pair + top kicker (TPTK) \u2014 the best possible one-pair hand. You beat all other Ax hands. Learn to bet for value without fear.',
+    humanHole: [c(14,'s'), c(13,'h')],
+    oppHole: [c(14,'c'), c(9,'d')],
+    community: [c(14,'h'), c(7,'d'), c(3,'c'), c(10,'s'), c(5,'h')],
   },
   {
-    id:'weak_kicker',
-    name:'Top Pair, Weak Kicker — The Kicker Trap',
-    concept:'Kicker Value, Domination, When to Fold Top Pair',
-    lesson:'Two players can both have an Ace, but the side card (kicker) decides the winner. A5 loses to AQ — you\'re "dominated." Recognizing kicker problems prevents you from calling off your whole stack with second-best hand.',
-    humanHole:[c(14,'c'),c(5,'h')],
-    oppHole:[c(14,'d'),c(12,'s')],
-    community:[c(14,'h'),c(8,'c'),c(3,'d'),c(10,'s'),c(6,'h')],
+    id: 'weak_kicker',
+    name: 'Top Pair, Weak Kicker \u2014 The Kicker Trap',
+    concept: 'Kicker Value, Domination, When to Fold Top Pair',
+    lesson: 'Two players can both have an Ace, but the side card (kicker) decides the winner. A5 loses to AQ \u2014 you\'re "dominated." Recognizing kicker problems prevents you from calling off your whole stack with second-best hand.',
+    humanHole: [c(14,'c'), c(5,'h')],
+    oppHole: [c(14,'d'), c(12,'s')],
+    community: [c(14,'h'), c(8,'c'), c(3,'d'), c(10,'s'), c(6,'h')],
   },
   {
-    id:'two_pair_danger',
-    name:'Two Pair on a Scary Board',
-    concept:'Board Texture, Hand Vulnerability, Betting to Protect',
-    lesson:'Two pair feels strong, but a "wet" board (connected cards, possible straights) can make your hand vulnerable fast. The turn makes a straight possible — now you must bet big to charge drawing hands, or risk giving free cards.',
-    humanHole:[c(14,'s'),c(9,'d')],
-    oppHole:[c(11,'h'),c(10,'c')],
-    community:[c(14,'h'),c(9,'c'),c(8,'d'),c(7,'s'),c(2,'h')],
+    id: 'two_pair_danger',
+    name: 'Two Pair on a Scary Board',
+    concept: 'Board Texture, Hand Vulnerability, Betting to Protect',
+    lesson: 'Two pair feels strong, but a "wet" board (connected cards, possible straights) can make your hand vulnerable fast. The turn makes a straight possible \u2014 now you must bet big to charge drawing hands, or risk giving free cards.',
+    humanHole: [c(14,'s'), c(9,'d')],
+    oppHole: [c(11,'h'), c(10,'c')],
+    community: [c(14,'h'), c(9,'c'), c(8,'d'), c(7,'s'), c(2,'h')],
   },
   {
-    id:'bluff_catch',
-    name:'Bluff Catching — Calling with Pot Odds',
-    concept:'Pot Odds on the River, Bluff Frequency, Hero Calls',
-    lesson:'On the river your opponent fires a big bet. They either have it or they\'re bluffing. Pot odds tell you the minimum percentage they need to be bluffing for a call to be profitable. You don\'t need to be right every time — just often enough.',
-    humanHole:[c(13,'s'),c(12,'c')],
-    oppHole:[c(11,'h'),c(10,'h')],
-    community:[c(13,'h'),c(11,'d'),c(2,'c'),c(5,'s'),c(8,'h')],
+    id: 'bluff_catch',
+    name: 'Bluff Catching \u2014 Calling with Pot Odds',
+    concept: 'Pot Odds on the River, Bluff Frequency, Hero Calls',
+    lesson: 'On the river your opponent fires a big bet. They either have it or they\'re bluffing. Pot odds tell you the minimum percentage they need to be bluffing for a call to be profitable. You don\'t need to be right every time \u2014 just often enough.',
+    humanHole: [c(13,'s'), c(12,'c')],
+    oppHole: [c(11,'h'), c(10,'h')],
+    community: [c(13,'h'), c(11,'d'), c(2,'c'), c(5,'s'), c(8,'h')],
   },
   {
-    id:'pocket_aces_vs_set',
-    name:'Pocket Aces — Beware the Set',
-    concept:'Losing with the Best Pre-Flop Hand, Reading Danger',
-    lesson:'AA is the best starting hand (80%+ favorite pre-flop) but can be cracked post-flop. When your opponent flopped a set of Kings, your aces are now the UNDERDOG. The lesson: even the best hand can be beaten — read the board.',
-    humanHole:[c(14,'s'),c(14,'h')],
-    oppHole:[c(13,'c'),c(13,'d')],
-    community:[c(13,'h'),c(7,'s'),c(2,'c'),c(9,'d'),c(4,'h')],
+    id: 'pocket_aces_vs_set',
+    name: 'Pocket Aces \u2014 Beware the Set',
+    concept: 'Losing with the Best Pre-Flop Hand, Reading Danger',
+    lesson: 'AA is the best starting hand (80%+ favorite pre-flop) but can be cracked post-flop. When your opponent flopped a set of Kings, your aces are now the UNDERDOG. The lesson: even the best hand can be beaten \u2014 read the board.',
+    humanHole: [c(14,'s'), c(14,'h')],
+    oppHole: [c(13,'c'), c(13,'d')],
+    community: [c(13,'h'), c(7,'s'), c(2,'c'), c(9,'d'), c(4,'h')],
   },
   {
-    id:'overcards_cbet',
-    name:'Ace-Queen Misses — The C-Bet Bluff',
-    concept:'Continuation Betting, Fold Equity, Bluffing in Position',
-    lesson:'You raised pre-flop with AQ (representing strength) but the flop missed you entirely. As the pre-flop aggressor in position, a continuation bet (c-bet) wins the pot often enough to be profitable — opponents miss flops ~67% of the time too.',
-    humanHole:[c(14,'d'),c(12,'c')],
-    oppHole:[c(9,'h'),c(8,'h')],
-    community:[c(10,'s'),c(6,'d'),c(3,'h'),c(5,'c'),c(2,'s')],
+    id: 'overcards_cbet',
+    name: 'Ace-Queen Misses \u2014 The C-Bet Bluff',
+    concept: 'Continuation Betting, Fold Equity, Bluffing in Position',
+    lesson: 'You raised pre-flop with AQ (representing strength) but the flop missed you entirely. As the pre-flop aggressor in position, a continuation bet (c-bet) wins the pot often enough to be profitable \u2014 opponents miss flops ~67% of the time too.',
+    humanHole: [c(14,'d'), c(12,'c')],
+    oppHole: [c(9,'h'), c(8,'h')],
+    community: [c(10,'s'), c(6,'d'), c(3,'h'), c(5,'c'), c(2,'s')],
   },
   {
-    id:'gutshot',
-    name:'The Gutshot — Weak Draw, Fold More Often',
-    concept:'Inside Straight Draw, 4 Outs, When to Fold Draws',
-    lesson:'The gutshot (inside straight draw) has only 4 outs — about 16% by river. Unlike the OESD\'s 8 outs, this draw rarely justifies a big call. Contrast this with the OESD scenario and understand why draw strength varies so dramatically.',
-    humanHole:[c(11,'s'),c(9,'c')],
-    oppHole:[c(14,'h'),c(14,'c')],
-    community:[c(10,'h'),c(7,'d'),c(3,'s'),c(2,'c'),c(8,'h')],
-  },
-  // ── NEW SCENARIOS ────────────────────────────────────────────────
-  {
-    id:'pure_bluff',
-    name:'The Position Bluff — Stealing the Pot',
-    concept:'Bluffing with Air, Fold Equity, Dry Board Texture',
-    lesson:'You have nothing — but you\'re in position on a dry, rainbow board with no draws. Alice checked to you, showing weakness. A bet of 40-60% of the pot here wins the pot outright often enough to be profitable. Bluffing isn\'t gambling; it\'s exploiting fold equity. Opponents who didn\'t connect with the board will fold most of the time. The dry board (no flush or straight draws) means they can\'t justify calling with just a draw.',
-    humanHole:[c(9,'s'),c(4,'d')],
-    oppHole:[c(10,'h'),c(6,'c')],
-    community:[c(2,'h'),c(7,'s'),c(3,'d'),c(13,'c'),c(5,'s')],
+    id: 'gutshot',
+    name: 'The Gutshot \u2014 Weak Draw, Fold More Often',
+    concept: 'Inside Straight Draw, 4 Outs, When to Fold Draws',
+    lesson: 'The gutshot (inside straight draw) has only 4 outs \u2014 about 16% by river. Unlike the OESD\'s 8 outs, this draw rarely justifies a big call. Contrast this with the OESD scenario and understand why draw strength varies so dramatically.',
+    humanHole: [c(11,'s'), c(9,'c')],
+    oppHole: [c(14,'h'), c(14,'c')],
+    community: [c(10,'h'), c(7,'d'), c(3,'s'), c(2,'c'), c(8,'h')],
   },
   {
-    id:'semi_bluff_raise',
-    name:'The Semi-Bluff Raise — Power with a Draw',
-    concept:'Fold Equity + Draw Equity, Raising vs. Calling Draws',
-    lesson:'You have a flush draw and Alice bets into you. Beginners always just call with a draw. The expert move is to RAISE. You can win two ways: (1) Alice folds immediately, giving you the pot now — "fold equity." (2) Your flush comes in and you win at showdown. Raising also charges opponents for their draws, builds the pot when you\'re an equity favorite, and puts maximum pressure on one-pair hands that can\'t stand heat.',
-    humanHole:[c(11,'h'),c(9,'h')],
-    oppHole:[c(8,'d'),c(5,'s')],
-    community:[c(2,'h'),c(8,'h'),c(5,'c'),c(3,'s'),c(7,'h')],
+    id: 'pure_bluff',
+    name: 'The Position Bluff \u2014 Stealing the Pot',
+    concept: 'Bluffing with Air, Fold Equity, Dry Board Texture',
+    lesson: 'You have nothing \u2014 but you\'re in position on a dry, rainbow board with no draws. Alice checked to you, showing weakness. A bet of 40-60% of the pot here wins the pot outright often enough to be profitable. Bluffing isn\'t gambling; it\'s exploiting fold equity.',
+    humanHole: [c(9,'s'), c(4,'d')],
+    oppHole: [c(10,'h'), c(6,'c')],
+    community: [c(2,'h'), c(7,'s'), c(3,'d'), c(13,'c'), c(5,'s')],
   },
   {
-    id:'three_bet',
-    name:'The 3-Bet — Re-Raising Pre-Flop',
-    concept:'3-Betting for Value, Pre-Flop Aggression, Building Big Pots',
-    lesson:'You have pocket Kings — the second best hand in poker. Alice raised pre-flop. Many beginners just call (flat-call), fearing an Ace on the flop. The correct play is to 3-bet (re-raise to ~3× her raise). This builds a huge pot with your best hands, narrows the field (isolates to one opponent), and gives you the initiative post-flop. You should also 3-bet bluff occasionally with hands like A5s or 76s suited to stay balanced — never let opponents know you only re-raise with monsters.',
-    humanHole:[c(13,'s'),c(13,'h')],
-    oppHole:[c(11,'c'),c(11,'d')],
-    community:[c(5,'h'),c(8,'d'),c(2,'c'),c(9,'s'),c(3,'h')],
+    id: 'semi_bluff_raise',
+    name: 'The Semi-Bluff Raise \u2014 Power with a Draw',
+    concept: 'Fold Equity + Draw Equity, Raising vs. Calling Draws',
+    lesson: 'You have a flush draw and Alice bets into you. Beginners always just call with a draw. The expert move is to RAISE. You can win two ways: (1) Alice folds immediately \u2014 "fold equity." (2) Your flush comes in and you win at showdown.',
+    humanHole: [c(11,'h'), c(9,'h')],
+    oppHole: [c(8,'d'), c(5,'s')],
+    community: [c(2,'h'), c(8,'h'), c(5,'c'), c(3,'s'), c(7,'h')],
   },
   {
-    id:'check_raise_trap',
-    name:'The Check-Raise — Trapping the Aggressor',
-    concept:'Check-Raising, Disguising Hand Strength, Trapping Bettors',
-    lesson:'You flopped a straight — a concealed monster. Alice has a set of 6s and will continuation-bet hard because her hand feels unbeatable. Instead of betting out (which telegraphs your strength and might scare her off), you CHECK — inviting her bet — then RAISE big when she fires. This is the check-raise: it disguises your hand, lets opponents commit more chips before they realize they\'re beat, and is the most powerful trapping tool in poker. Use it with your strongest hands and occasionally as a bluff to stay unpredictable.',
-    humanHole:[c(8,'s'),c(7,'d')],
-    oppHole:[c(6,'h'),c(6,'d')],
-    community:[c(9,'h'),c(6,'c'),c(5,'d'),c(2,'s'),c(13,'h')],
+    id: 'three_bet',
+    name: 'The 3-Bet \u2014 Re-Raising Pre-Flop',
+    concept: '3-Betting for Value, Pre-Flop Aggression, Building Big Pots',
+    lesson: 'You have pocket Kings \u2014 the second best hand in poker. Alice raised pre-flop. The correct play is to 3-bet (re-raise to ~3x her raise). This builds a huge pot with your best hands and narrows the field.',
+    humanHole: [c(13,'s'), c(13,'h')],
+    oppHole: [c(11,'c'), c(11,'d')],
+    community: [c(5,'h'), c(8,'d'), c(2,'c'), c(9,'s'), c(3,'h')],
+  },
+  {
+    id: 'check_raise_trap',
+    name: 'The Check-Raise \u2014 Trapping the Aggressor',
+    concept: 'Check-Raising, Disguising Hand Strength, Trapping Bettors',
+    lesson: 'You flopped a straight \u2014 a concealed monster. Alice has a set of 6s and will continuation-bet hard. Instead of betting out, you CHECK \u2014 inviting her bet \u2014 then RAISE big. This is the check-raise: the most powerful trapping tool in poker.',
+    humanHole: [c(8,'s'), c(7,'d')],
+    oppHole: [c(6,'h'), c(6,'d')],
+    community: [c(9,'h'), c(6,'c'), c(5,'d'), c(2,'s'), c(13,'h')],
   },
 ];
 
-// ═══════════════════════════════════════════════════════════════════
-// DECK SEEDING
-// ═══════════════════════════════════════════════════════════════════
+// =====================================================================
+// DECK & CARD UTILITIES
+// =====================================================================
+function createDeck() {
+  const deck = [];
+  for (const suit of ['spades', 'hearts', 'diamonds', 'clubs']) {
+    for (let v = 2; v <= 14; v++) deck.push({ suit, value: v });
+  }
+  return deck;
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.random() * (i + 1) | 0;
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function buildSeededDeck(humanHole, oppHole, community) {
-  const specified=[...humanHole,...(oppHole||[]),...(community||[])];
-  const pool=shuffle(mkDeck().filter(card=>!specified.some(s=>s.value===card.value&&s.suit===card.suit)));
-  let pi=0;
-  const take=()=>pool[pi++];
-  const comm=community||[];
-  const flop1=comm[0]||take(), flop2=comm[1]||take(), flop3=comm[2]||take();
-  const turn=comm[3]||take(), river=comm[4]||take();
-  const h1=humanHole[0], h2=humanHole[1];
-  const a1=(oppHole&&oppHole[0])||take(), a2=(oppHole&&oppHole[1])||take();
-  const b1=take(), b2=take();
-  const cr1=take(), cr2=take();
-  const base=pool.slice(pi);
+  const specified = [...humanHole, ...(oppHole || []), ...(community || [])];
+  const isSpecified = (card) => specified.some(s => s.value === card.value && s.suit === card.suit);
+  const pool = shuffle(createDeck().filter(card => !isSpecified(card)));
+  let pi = 0;
+  const take = () => {
+    if (pi >= pool.length) throw new Error('Deck exhausted during seeding');
+    return pool[pi++];
+  };
+  const comm = community || [];
+  const flop1 = comm[0] || take(), flop2 = comm[1] || take(), flop3 = comm[2] || take();
+  const turn = comm[3] || take(), river = comm[4] || take();
+  const h1 = humanHole[0], h2 = humanHole[1];
+  const a1 = (oppHole && oppHole[0]) || take(), a2 = (oppHole && oppHole[1]) || take();
+  const b1 = take(), b2 = take();
+  const cr1 = take(), cr2 = take();
+  const base = pool.slice(pi);
+  // Stack deck so dealing (pop from end) gives cards in correct order
   return [...base, river, turn, flop3, flop2, flop1, cr2, cr1, b2, b1, a2, a1, h2, h1];
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// GAME STATE
-// ═══════════════════════════════════════════════════════════════════
-let G={};
-let G_DIFF=localStorage.getItem('poker-diff')||'beginner';
-function mk(name,human){return{name,chips:1000,holeCards:[],folded:false,allIn:false,roundBet:0,totalBet:0,human,showCards:false,winner:false};}
+// =====================================================================
+// HAND EVALUATOR
+// =====================================================================
+function combinations(arr, k) {
+  if (k === 0) return [[]];
+  if (arr.length < k) return [];
+  const [first, ...rest] = arr;
+  return [...combinations(rest, k - 1).map(c => [first, ...c]), ...combinations(rest, k)];
+}
 
-function resetGame(){
-  const order=[];for(let i=0;i<SCENARIOS.length;i++)order.push(i);shuffle(order);
-  CUR_SB=10;CUR_BB=20;
-  G={
-    players:[mk('You',true),mk('Alice',false),mk('Bob',false),mk('Carol',false)],
-    deck:[],community:[],pot:0,
-    phase:'waiting',
-    dealerIdx:Math.floor(Math.random()*4),
-    sbIdx:-1,bbIdx:-1,currentIdx:-1,
-    currentBet:0,minRaise:20,
-    actQueue:[],
-    handNum:0,
-    handActions:[],phaseActions:[],
-    scenario:null,
-    scenarioOrder:order,
-    scenarioIdx:0,
-    stats:{handsPlayed:0,handsWon:0,bluffAttempts:0,bluffWon:0},
-    handHistory:[],
+function evaluate5(cards) {
+  const vals = cards.map(c => c.value).sort((a, b) => b - a);
+  const suits = cards.map(c => c.suit);
+  const isFlush = suits.every(s => s === suits[0]);
+  let isStraight = false, straightHigh = vals[0];
+
+  if (new Set(vals).size === 5) {
+    if (vals[0] - vals[4] === 4) isStraight = true;
+    // Ace-low straight (wheel): A-2-3-4-5
+    else if (vals[0] === 14 && vals[1] === 5 && vals[2] === 4 && vals[3] === 3 && vals[4] === 2) {
+      isStraight = true;
+      straightHigh = 5;
+    }
+  }
+
+  const counts = {};
+  for (const v of vals) counts[v] = (counts[v] || 0) + 1;
+  const groups = Object.entries(counts)
+    .map(([v, cnt]) => ({ v: +v, cnt }))
+    .sort((a, b) => b.cnt - a.cnt || b.v - a.v);
+
+  if (isFlush && isStraight) return { rank: 8, key: [straightHigh] };
+  if (groups[0].cnt === 4)   return { rank: 7, key: [groups[0].v, groups[1].v] };
+  if (groups[0].cnt === 3 && groups[1].cnt === 2) return { rank: 6, key: [groups[0].v, groups[1].v] };
+  if (isFlush)               return { rank: 5, key: vals };
+  if (isStraight)            return { rank: 4, key: [straightHigh] };
+  if (groups[0].cnt === 3)   return { rank: 3, key: [groups[0].v, ...vals.filter(v => v !== groups[0].v)] };
+  if (groups[0].cnt === 2 && groups[1].cnt === 2) {
+    const pairs = [groups[0].v, groups[1].v].sort((a, b) => b - a);
+    const kicker = vals.find(v => v !== pairs[0] && v !== pairs[1]);
+    return { rank: 2, key: [...pairs, kicker] };
+  }
+  if (groups[0].cnt === 2)   return { rank: 1, key: [groups[0].v, ...vals.filter(v => v !== groups[0].v)] };
+  return { rank: 0, key: vals };
+}
+
+function bestHand(hole, comm) {
+  const all = [...hole, ...comm];
+  if (all.length <= 5) return evaluate5(all);
+  let best = null;
+  for (const combo of combinations(all, 5)) {
+    const hand = evaluate5(combo);
+    if (!best || compareHands(hand, best) > 0) best = hand;
+  }
+  return best;
+}
+
+function compareHands(a, b) {
+  if (a.rank !== b.rank) return a.rank - b.rank;
+  for (let i = 0; i < Math.max(a.key.length, b.key.length); i++) {
+    const diff = (a.key[i] || 0) - (b.key[i] || 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
+// =====================================================================
+// GAME STATE
+// =====================================================================
+let G = {};
+let G_DIFF = localStorage.getItem('poker-diff') || 'beginner';
+
+function createPlayer(name, isHuman) {
+  return {
+    name, chips: STARTING_CHIPS, holeCards: [], folded: false,
+    allIn: false, roundBet: 0, totalBet: 0, human: isHuman,
+    showCards: false, winner: false,
   };
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// DECK
-// ═══════════════════════════════════════════════════════════════════
-function mkDeck(){const d=[];for(const s of['spades','hearts','diamonds','clubs'])for(let v=2;v<=14;v++)d.push({suit:s,value:v});return d;}
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
-
-// ═══════════════════════════════════════════════════════════════════
-// HAND EVALUATOR
-// ═══════════════════════════════════════════════════════════════════
-function combos(arr,k){if(k===0)return[[]];if(arr.length<k)return[];const[f,...r]=arr;return[...combos(r,k-1).map(c=>[f,...c]),...combos(r,k)];}
-function eval5(cards){
-  const vs=cards.map(c=>c.value).sort((a,b)=>b-a),ss=cards.map(c=>c.suit);
-  const flush=ss.every(s=>s===ss[0]);
-  let straight=false,sHigh=vs[0];
-  if(new Set(vs).size===5){if(vs[0]-vs[4]===4)straight=true;else if(vs[0]===14&&vs[1]===5&&vs[2]===4&&vs[3]===3&&vs[4]===2){straight=true;sHigh=5;}}
-  const cnt={};for(const v of vs)cnt[v]=(cnt[v]||0)+1;
-  const g=Object.entries(cnt).map(([v,c])=>({v:+v,c})).sort((a,b)=>b.c-a.c||b.v-a.v);
-  if(flush&&straight)return{rank:8,key:[sHigh]};
-  if(g[0].c===4)return{rank:7,key:[g[0].v,g[1].v]};
-  if(g[0].c===3&&g[1].c===2)return{rank:6,key:[g[0].v,g[1].v]};
-  if(flush)return{rank:5,key:vs};
-  if(straight)return{rank:4,key:[sHigh]};
-  if(g[0].c===3)return{rank:3,key:[g[0].v,...vs.filter(v=>v!==g[0].v)]};
-  if(g[0].c===2&&g[1].c===2){const ps=[g[0].v,g[1].v].sort((a,b)=>b-a);const k=vs.find(v=>v!==ps[0]&&v!==ps[1]);return{rank:2,key:[...ps,k]};}
-  if(g[0].c===2)return{rank:1,key:[g[0].v,...vs.filter(v=>v!==g[0].v)]};
-  return{rank:0,key:vs};
+function resetGame() {
+  const scenarioOrder = [];
+  for (let i = 0; i < SCENARIOS.length; i++) scenarioOrder.push(i);
+  shuffle(scenarioOrder);
+  CUR_SB = 10;
+  CUR_BB = 20;
+  G = {
+    players: [createPlayer('You', true), createPlayer('Alice', false), createPlayer('Bob', false), createPlayer('Carol', false)],
+    deck: [], community: [], pot: 0,
+    phase: 'waiting',
+    dealerIdx: Math.floor(Math.random() * PLAYER_COUNT),
+    sbIdx: -1, bbIdx: -1, currentIdx: -1,
+    currentBet: 0, minRaise: 20,
+    actQueue: [],
+    handNum: 0,
+    handActions: [], phaseActions: [],
+    scenario: null,
+    scenarioOrder,
+    scenarioIdx: 0,
+    stats: { handsPlayed: 0, handsWon: 0, bluffAttempts: 0, bluffWon: 0 },
+    handHistory: [],
+    awaitingAction: false,
+  };
 }
-function bestHand(hole,comm){
-  const all=[...hole,...comm];if(all.length<=5)return eval5(all);
-  let best=null;for(const co of combos(all,5)){const h=eval5(co);if(!best||cmpH(h,best)>0)best=h;}return best;
-}
-function cmpH(a,b){if(a.rank!==b.rank)return a.rank-b.rank;for(let i=0;i<Math.max(a.key.length,b.key.length);i++){const d=(a.key[i]||0)-(b.key[i]||0);if(d!==0)return d;}return 0;}
 
-// ═══════════════════════════════════════════════════════════════════
-// AI STRENGTH
-// ═══════════════════════════════════════════════════════════════════
-function aiStrength(hole,comm){
-  if(comm.length===0){
-    const[a,b]=hole.map(c=>c.value).sort((x,y)=>y-x);
-    const suited=hole[0].suit===hole[1].suit,conn=Math.abs(hole[0].value-hole[1].value)<=2;
-    if(a===b)return 0.5+(a/14)*0.45;
-    const base=(a+b)/(14+13);return base*0.72+(suited?.05:0)+(conn?.03:0);
+// =====================================================================
+// SIDE POT CALCULATION
+// =====================================================================
+// Calculates separate pots when players go all-in for different amounts.
+// Each pot has an amount and a list of non-folded players eligible to win it.
+function calculateSidePots() {
+  const betLevels = [...new Set(
+    G.players.filter(p => p.totalBet > 0).map(p => p.totalBet)
+  )].sort((a, b) => a - b);
+
+  const pots = [];
+  let prevLevel = 0;
+
+  for (const level of betLevels) {
+    const increment = level - prevLevel;
+    if (increment <= 0) continue;
+
+    let potAmount = 0;
+    for (const p of G.players) {
+      if (p.totalBet > prevLevel) {
+        potAmount += Math.min(increment, p.totalBet - prevLevel);
+      }
+    }
+
+    const eligible = G.players.filter(p => !p.folded && p.totalBet >= level);
+
+    if (potAmount > 0) {
+      pots.push({ amount: potAmount, eligible });
+    }
+    prevLevel = level;
   }
-  const h=bestHand(hole,comm);return[.15,.35,.5,.6,.7,.78,.85,.93,.98][h.rank]+Math.random()*.04-.02;
+
+  return pots;
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// =====================================================================
 // GAME FLOW
-// ═══════════════════════════════════════════════════════════════════
-function startGame(){resetGame();startHand();}
+// =====================================================================
+function startGame() { resetGame(); startHand(); }
 
-function startHand(){
-  const alive=G.players.filter(p=>p.chips>0);
-  if(alive.length<2){endGame();return;}
+// Find next player who hasn't folded and has chips (for dealer/blind rotation)
+function nextNonFolded(from) {
+  let i = (from + 1) % PLAYER_COUNT;
+  while (G.players[i].folded || G.players[i].chips <= 0) i = (i + 1) % PLAYER_COUNT;
+  return i;
+}
+
+// Find next player who can still act in betting (not folded, not all-in)
+function nextCanAct(from) {
+  let i = (from + 1) % PLAYER_COUNT;
+  const start = i;
+  while (G.players[i].folded || G.players[i].allIn) {
+    i = (i + 1) % PLAYER_COUNT;
+    if (i === start) break;
+  }
+  return i;
+}
+
+function postBlind(idx, amount) {
+  const p = G.players[idx];
+  const actual = Math.min(amount, p.chips);
+  p.chips -= actual;
+  p.roundBet += actual;
+  p.totalBet += actual;
+  G.pot += actual;
+  if (p.chips === 0) p.allIn = true;
+}
+
+function buildActionQueue(startIdx) {
+  G.actQueue = [];
+  let i = startIdx;
+  for (let n = 0; n < PLAYER_COUNT; n++) {
+    if (!G.players[i].folded && !G.players[i].allIn) G.actQueue.push(i);
+    i = (i + 1) % PLAYER_COUNT;
+  }
+}
+
+function startHand() {
+  const alive = G.players.filter(p => p.chips > 0);
+  if (alive.length < 2) { endGame(); return; }
   G.handNum++;
 
-  // Update blind levels (escalate every 5 hands)
-  const blindIdx=Math.min(Math.floor((G.handNum-1)/5),BLIND_SCHEDULE.length-1);
-  CUR_SB=BLIND_SCHEDULE[blindIdx][0];
-  CUR_BB=BLIND_SCHEDULE[blindIdx][1];
+  // Update blind levels
+  const blindIdx = Math.min(Math.floor((G.handNum - 1) / HANDS_PER_BLIND_LEVEL), BLIND_SCHEDULE.length - 1);
+  CUR_SB = BLIND_SCHEDULE[blindIdx][0];
+  CUR_BB = BLIND_SCHEDULE[blindIdx][1];
 
-  G.community=[];G.pot=0;G.handActions=[];G.phaseActions=[];
-  for(const p of G.players){p.holeCards=[];p.folded=p.chips<=0;p.allIn=false;p.roundBet=0;p.totalBet=0;p.showCards=false;p.winner=false;}
-  do{G.dealerIdx=(G.dealerIdx+1)%4;}while(G.players[G.dealerIdx].chips<=0);
-  G.sbIdx=nextActive(G.dealerIdx);G.bbIdx=nextActive(G.sbIdx);
+  G.community = [];
+  G.pot = 0;
+  G.handActions = [];
+  G.phaseActions = [];
+  for (const p of G.players) {
+    p.holeCards = [];
+    p.folded = p.chips <= 0;
+    p.allIn = false;
+    p.roundBet = 0;
+    p.totalBet = 0;
+    p.showCards = false;
+    p.winner = false;
+  }
 
-  // Scenario seeding — only when all 4 players have chips
-  const allFour=G.players.every(p=>p.chips>0);
-  if(allFour && Math.random()<0.78){
-    const si=G.scenarioOrder[G.scenarioIdx%G.scenarioOrder.length];
+  do { G.dealerIdx = (G.dealerIdx + 1) % PLAYER_COUNT; } while (G.players[G.dealerIdx].chips <= 0);
+  G.sbIdx = nextNonFolded(G.dealerIdx);
+  G.bbIdx = nextNonFolded(G.sbIdx);
+
+  // Scenario seeding: only when all 4 players have chips
+  const allFour = G.players.every(p => p.chips > 0);
+  if (allFour && Math.random() < 0.78) {
+    const si = G.scenarioOrder[G.scenarioIdx % G.scenarioOrder.length];
     G.scenarioIdx++;
-    G.scenario=SCENARIOS[si];
-    G.deck=buildSeededDeck(G.scenario.humanHole,G.scenario.oppHole,G.scenario.community);
-  }else{
-    G.scenario=null;
-    G.deck=shuffle(mkDeck());
+    G.scenario = SCENARIOS[si];
+    G.deck = buildSeededDeck(G.scenario.humanHole, G.scenario.oppHole, G.scenario.community);
+  } else {
+    G.scenario = null;
+    G.deck = shuffle(createDeck());
   }
 
-  for(const p of G.players)if(!p.folded)p.holeCards=[G.deck.pop(),G.deck.pop()];
-  postBlind(G.sbIdx,CUR_SB);postBlind(G.bbIdx,CUR_BB);
-  G.currentBet=CUR_BB;G.minRaise=CUR_BB;G.phase='preflop';
-  buildQueue(nextActive(G.bbIdx));
-  const blindLabel=CUR_SB===10?'':` · Blinds $${CUR_SB}/$${CUR_BB}`;
-  setMsg(`Hand #${G.handNum} — ${G.players[G.dealerIdx].name} deals${blindLabel}`);
-  render();tick();
-}
-
-function nextActive(from){let i=(from+1)%4;while(G.players[i].folded||G.players[i].chips<=0)i=(i+1)%4;return i;}
-function nextActingFrom(from){let i=(from+1)%4,s=i;while(G.players[i].folded||G.players[i].allIn){i=(i+1)%4;if(i===s)break;}return i;}
-function postBlind(idx,amt){const p=G.players[idx],a=Math.min(amt,p.chips);p.chips-=a;p.roundBet+=a;p.totalBet+=a;G.pot+=a;if(p.chips===0)p.allIn=true;}
-function buildQueue(startIdx){G.actQueue=[];let i=startIdx;for(let n=0;n<4;n++){if(!G.players[i].folded&&!G.players[i].allIn)G.actQueue.push(i);i=(i+1)%4;}}
-function tick(){
-  while(G.actQueue.length>0&&(G.players[G.actQueue[0]].folded||G.players[G.actQueue[0]].allIn))G.actQueue.shift();
-  if(G.actQueue.length===0){advancePhase();return;}
-  const idx=G.actQueue[0];G.currentIdx=idx;render();
-  if(G.players[idx].human){showCoach();showButtons();}
-  else setTimeout(()=>aiAct(idx),700+Math.random()*600);
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// AI ACTION
-// ═══════════════════════════════════════════════════════════════════
-function aiAct(idx){
-  const p=G.players[idx];if(p.folded||p.allIn){act(idx,'check',0);return;}
-  // Heads-up: AI plays more aggressively
-  const activeCnt=G.players.filter(pl=>pl.chips>0&&!pl.folded).length;
-  const aggBonus=activeCnt<=2?0.10:activeCnt<=3?0.04:0;
-  const s=aiStrength(p.holeCards,G.community),call=G.currentBet-p.roundBet,odds=call>0?call/(G.pot+call):0,r=Math.random();
-  let action,amount=0;
-  if(call===0){
-    if(s+aggBonus>.68&&r<.6){amount=Math.min(p.chips+p.roundBet,Math.max(G.currentBet+G.minRaise,p.roundBet+Math.floor(G.pot*(.4+r*.6))));action=(amount-p.roundBet)>=p.chips?'allin':'raise';}
-    else if(s+aggBonus>.45&&r<.25){amount=Math.min(p.chips+p.roundBet,p.roundBet+Math.floor(G.pot*.35));amount=Math.max(amount,G.currentBet+G.minRaise);action=(amount-p.roundBet)>=p.chips?'allin':'raise';}
-    else action='check';
-  }else{
-    if(s>odds+.38&&r<.38){amount=Math.min(p.chips+p.roundBet,Math.max(G.currentBet+G.minRaise,G.currentBet+Math.floor(G.pot*(.3+r*.5))));action=(amount-p.roundBet)>=p.chips?'allin':'raise';}
-    else if(s>odds+.08-aggBonus||(s>.28&&r<.18))action='call';
-    else action='fold';
+  for (const p of G.players) {
+    if (!p.folded) p.holeCards = [G.deck.pop(), G.deck.pop()];
   }
-  act(idx,action,amount);
+  postBlind(G.sbIdx, CUR_SB);
+  postBlind(G.bbIdx, CUR_BB);
+  G.currentBet = CUR_BB;
+  G.minRaise = CUR_BB;
+  G.phase = 'preflop';
+  buildActionQueue(nextNonFolded(G.bbIdx));
+
+  const blindLabel = CUR_SB === 10 ? '' : ' \u00b7 Blinds $' + CUR_SB + '/$' + CUR_BB;
+  setMsg('Hand #' + G.handNum + ' \u2014 ' + G.players[G.dealerIdx].name + ' deals' + blindLabel);
+  render();
+  tick();
 }
 
-// ═══════════════════════════════════════════════════════════════════
+function tick() {
+  while (G.actQueue.length > 0 && (G.players[G.actQueue[0]].folded || G.players[G.actQueue[0]].allIn)) {
+    G.actQueue.shift();
+  }
+  if (G.actQueue.length === 0) { advancePhase(); return; }
+
+  const idx = G.actQueue[0];
+  G.currentIdx = idx;
+  render();
+
+  if (G.players[idx].human) {
+    showCoach();
+    showButtons();
+  } else {
+    setTimeout(() => aiAct(idx), 700 + Math.random() * 600);
+  }
+}
+
+// =====================================================================
+// AI LOGIC
+// =====================================================================
+function aiHandStrength(hole, comm) {
+  if (comm.length === 0) {
+    const [a, b] = hole.map(c => c.value).sort((x, y) => y - x);
+    const suited = hole[0].suit === hole[1].suit;
+    const connected = Math.abs(hole[0].value - hole[1].value) <= 2;
+    if (a === b) return 0.5 + (a / 14) * 0.45;
+    const base = (a + b) / (14 + 13);
+    return base * 0.72 + (suited ? 0.05 : 0) + (connected ? 0.03 : 0);
+  }
+  const h = bestHand(hole, comm);
+  return [0.15, 0.35, 0.5, 0.6, 0.7, 0.78, 0.85, 0.93, 0.98][h.rank] + Math.random() * 0.04 - 0.02;
+}
+
+function aiAct(idx) {
+  const p = G.players[idx];
+  if (p.folded || p.allIn) { act(idx, 'check', 0); return; }
+
+  const activeCnt = G.players.filter(pl => pl.chips > 0 && !pl.folded).length;
+  const aggBonus = activeCnt <= 2 ? 0.10 : activeCnt <= 3 ? 0.04 : 0;
+  const strength = aiHandStrength(p.holeCards, G.community);
+  const callCost = G.currentBet - p.roundBet;
+  const potOdds = callCost > 0 ? callCost / (G.pot + callCost) : 0;
+  const rand = Math.random();
+
+  let action, amount = 0;
+
+  if (callCost === 0) {
+    if (strength + aggBonus > 0.68 && rand < 0.6) {
+      amount = Math.min(p.chips + p.roundBet, Math.max(G.currentBet + G.minRaise, p.roundBet + Math.floor(G.pot * (0.4 + rand * 0.6))));
+      action = (amount - p.roundBet) >= p.chips ? 'allin' : 'raise';
+    } else if (strength + aggBonus > 0.45 && rand < 0.25) {
+      amount = Math.min(p.chips + p.roundBet, p.roundBet + Math.floor(G.pot * 0.35));
+      amount = Math.max(amount, G.currentBet + G.minRaise);
+      action = (amount - p.roundBet) >= p.chips ? 'allin' : 'raise';
+    } else {
+      action = 'check';
+    }
+  } else {
+    if (strength > potOdds + 0.38 && rand < 0.38) {
+      amount = Math.min(p.chips + p.roundBet, Math.max(G.currentBet + G.minRaise, G.currentBet + Math.floor(G.pot * (0.3 + rand * 0.5))));
+      action = (amount - p.roundBet) >= p.chips ? 'allin' : 'raise';
+    } else if (strength > potOdds + 0.08 - aggBonus || (strength > 0.28 && rand < 0.18)) {
+      action = 'call';
+    } else {
+      action = 'fold';
+    }
+  }
+  act(idx, action, amount);
+}
+
+// =====================================================================
 // PROCESS ACTION
-// ═══════════════════════════════════════════════════════════════════
-function act(idx,action,raiseTotal){
-  const p=G.players[idx];G.actQueue.shift();hideButtons();
-  let rebuild=false,msg=`${p.name}: `;
-  if(action==='fold'){p.folded=true;msg+='folds';}
-  else if(action==='check'){msg+='checks';}
-  else if(action==='call'){
-    const a=Math.min(G.currentBet-p.roundBet,p.chips);p.chips-=a;p.roundBet+=a;p.totalBet+=a;G.pot+=a;if(p.chips===0)p.allIn=true;
-    msg+=p.allIn?`calls all-in $${p.roundBet}`:`calls $${G.currentBet}`;
-  }else if(action==='raise'){
-    const tgt=Math.min(raiseTotal,p.chips+p.roundBet),add=Math.min(tgt-p.roundBet,p.chips),actual=p.roundBet+add;
-    G.minRaise=Math.max(CUR_BB,actual-G.currentBet);G.currentBet=Math.max(G.currentBet,actual);
-    p.chips-=add;p.roundBet=actual;p.totalBet+=add;G.pot+=add;if(p.chips===0)p.allIn=true;
-    msg+=`raises to $${actual}`;rebuild=true;
-  }else if(action==='allin'){
-    const add=p.chips,actual=p.roundBet+add;
-    if(actual>G.currentBet){G.minRaise=Math.max(CUR_BB,actual-G.currentBet);G.currentBet=actual;rebuild=true;}
-    p.chips=0;p.roundBet=actual;p.totalBet+=add;G.pot+=add;p.allIn=true;msg+=`goes all-in $${actual}`;
+// =====================================================================
+function validateRaiseAmount(amount) {
+  const p = G.players[0];
+  const minBet = G.currentBet + G.minRaise;
+  const maxBet = p.chips + p.roundBet;
+  if (!Number.isFinite(amount)) return minBet;
+  return Math.max(minBet, Math.min(maxBet, Math.floor(amount)));
+}
+
+function act(idx, action, raiseTotal) {
+  const p = G.players[idx];
+  G.actQueue.shift();
+  hideButtons();
+  let rebuild = false;
+  let msg = p.name + ': ';
+
+  if (action === 'fold') {
+    p.folded = true;
+    msg += 'folds';
+  } else if (action === 'check') {
+    msg += 'checks';
+  } else if (action === 'call') {
+    const add = Math.min(G.currentBet - p.roundBet, p.chips);
+    p.chips -= add;
+    p.roundBet += add;
+    p.totalBet += add;
+    G.pot += add;
+    if (p.chips === 0) p.allIn = true;
+    msg += p.allIn ? 'calls all-in $' + p.roundBet : 'calls $' + G.currentBet;
+  } else if (action === 'raise') {
+    if (p.human) raiseTotal = validateRaiseAmount(raiseTotal);
+    const target = Math.min(raiseTotal, p.chips + p.roundBet);
+    const add = Math.min(target - p.roundBet, p.chips);
+    const actual = p.roundBet + add;
+    G.minRaise = Math.max(CUR_BB, actual - G.currentBet);
+    G.currentBet = Math.max(G.currentBet, actual);
+    p.chips -= add;
+    p.roundBet = actual;
+    p.totalBet += add;
+    G.pot += add;
+    if (p.chips === 0) p.allIn = true;
+    msg += 'raises to $' + actual;
+    rebuild = true;
+  } else if (action === 'allin') {
+    const add = p.chips;
+    const actual = p.roundBet + add;
+    if (actual > G.currentBet) {
+      G.minRaise = Math.max(CUR_BB, actual - G.currentBet);
+      G.currentBet = actual;
+      rebuild = true;
+    }
+    p.chips = 0;
+    p.roundBet = actual;
+    p.totalBet += add;
+    G.pot += add;
+    p.allIn = true;
+    msg += 'goes all-in $' + actual;
   }
-  const entry={idx,phase:G.phase,action,amount:G.currentBet};G.handActions.push(entry);G.phaseActions.push(entry);
+
+  G.handActions.push({ idx, phase: G.phase, action, amount: G.currentBet });
+  G.phaseActions.push({ idx, phase: G.phase, action, amount: G.currentBet });
   setMsg(msg);
-  if(rebuild){const nq=[];let i=(idx+1)%4;while(i!==idx){if(!G.players[i].folded&&!G.players[i].allIn)nq.push(i);i=(i+1)%4;}G.actQueue=nq;}
-  render();
-  const active=G.players.filter(p=>!p.folded);
-  if(active.length===1){setTimeout(()=>awardPot([active[0]],null),600);return;}
-  setTimeout(tick,350);
-}
 
-// ═══════════════════════════════════════════════════════════════════
-// PHASE TRANSITIONS
-// ═══════════════════════════════════════════════════════════════════
-function advancePhase(){
-  for(const p of G.players)p.roundBet=0;G.currentBet=0;G.minRaise=CUR_BB;G.phaseActions=[];
-  const active=G.players.filter(p=>!p.folded);
-  if(G.phase==='preflop'){G.phase='flop';G.community.push(G.deck.pop(),G.deck.pop(),G.deck.pop());setMsg('The Flop');}
-  else if(G.phase==='flop'){G.phase='turn';G.community.push(G.deck.pop());setMsg('The Turn');}
-  else if(G.phase==='turn'){G.phase='river';G.community.push(G.deck.pop());setMsg('The River');}
-  else if(G.phase==='river'){G.phase='showdown';doShowdown();return;}
-  render();
-  const nonAI=active.filter(p=>!p.allIn);
-  if(nonAI.length<=1){setTimeout(advancePhase,900);return;}
-  buildQueue(nextActingFrom(G.dealerIdx));setTimeout(tick,500);
-}
-function doShowdown(){
-  for(const p of G.players)if(!p.folded)p.showCards=true;
-  while(G.community.length<5)G.community.push(G.deck.pop());
-  render();
-  setTimeout(()=>{
-    const active=G.players.filter(p=>!p.folded);
-    const ev=active.map(p=>({p,h:bestHand(p.holeCards,G.community)}));
-    let best=ev[0];for(const e of ev)if(cmpH(e.h,best.h)>0)best=e;
-    const winners=ev.filter(e=>cmpH(e.h,best.h)===0).map(e=>e.p);
-    awardPot(winners,best.h);
-  },700);
-}
-function awardPot(winners,hand){
-  const share=Math.floor(G.pot/winners.length),rem=G.pot-share*winners.length;
-  for(let i=0;i<winners.length;i++)winners[i].chips+=share+(i===0?rem:0);
-  for(const p of G.players)p.winner=winners.includes(p);
-  const pot=G.pot;G.pot=0;G.phase='done';render();
-  const isYou=winners.some(w=>w.human);
-
-  // Track stats
-  G.stats.handsPlayed++;
-  if(isYou)G.stats.handsWon++;
-  const humanActions=G.handActions.filter(a=>a.idx===0&&(a.action==='raise'||a.action==='allin'));
-  const humanHand=G.players[0].holeCards.length?bestHand(G.players[0].holeCards,G.community):null;
-  if(humanActions.length>0&&humanHand&&humanHand.rank<=1){
-    G.stats.bluffAttempts++;
-    if(isYou)G.stats.bluffWon++;
+  // Rebuild action queue after a raise so remaining players can respond
+  if (rebuild) {
+    const newQueue = [];
+    let i = (idx + 1) % PLAYER_COUNT;
+    while (i !== idx) {
+      if (!G.players[i].folded && !G.players[i].allIn) newQueue.push(i);
+      i = (i + 1) % PLAYER_COUNT;
+    }
+    G.actQueue = newQueue;
   }
 
-  // Log hand history
+  render();
+
+  const active = G.players.filter(p => !p.folded);
+  if (active.length === 1) {
+    setTimeout(() => awardFoldWin(active[0]), 600);
+    return;
+  }
+  setTimeout(tick, 350);
+}
+
+// =====================================================================
+// PHASE TRANSITIONS
+// =====================================================================
+function advancePhase() {
+  for (const p of G.players) p.roundBet = 0;
+  G.currentBet = 0;
+  G.minRaise = CUR_BB;
+  G.phaseActions = [];
+
+  if (G.phase === 'preflop') {
+    G.phase = 'flop';
+    G.community.push(G.deck.pop(), G.deck.pop(), G.deck.pop());
+    setMsg('The Flop');
+  } else if (G.phase === 'flop') {
+    G.phase = 'turn';
+    G.community.push(G.deck.pop());
+    setMsg('The Turn');
+  } else if (G.phase === 'turn') {
+    G.phase = 'river';
+    G.community.push(G.deck.pop());
+    setMsg('The River');
+  } else if (G.phase === 'river') {
+    G.phase = 'showdown';
+    doShowdown();
+    return;
+  }
+
+  render();
+  const active = G.players.filter(p => !p.folded);
+  const canAct = active.filter(p => !p.allIn);
+  if (canAct.length <= 1) { setTimeout(advancePhase, 900); return; }
+  buildActionQueue(nextCanAct(G.dealerIdx));
+  setTimeout(tick, 500);
+}
+
+function doShowdown() {
+  for (const p of G.players) if (!p.folded) p.showCards = true;
+  while (G.community.length < 5) G.community.push(G.deck.pop());
+  render();
+
+  setTimeout(() => {
+    const sidePots = calculateSidePots();
+    const winnings = new Map();
+    let displayHand = null;
+
+    for (const pot of sidePots) {
+      if (pot.eligible.length === 0) continue;
+
+      if (pot.eligible.length === 1) {
+        const winner = pot.eligible[0];
+        winnings.set(winner, (winnings.get(winner) || 0) + pot.amount);
+        continue;
+      }
+
+      const evaluated = pot.eligible.map(p => ({ p, h: bestHand(p.holeCards, G.community) }));
+      let best = evaluated[0];
+      for (const e of evaluated) if (compareHands(e.h, best.h) > 0) best = e;
+      const potWinners = evaluated.filter(e => compareHands(e.h, best.h) === 0).map(e => e.p);
+
+      if (!displayHand) displayHand = best.h;
+
+      const share = Math.floor(pot.amount / potWinners.length);
+      const remainder = pot.amount - share * potWinners.length;
+      for (let i = 0; i < potWinners.length; i++) {
+        const w = potWinners[i];
+        winnings.set(w, (winnings.get(w) || 0) + share + (i === 0 ? remainder : 0));
+      }
+    }
+
+    // Apply winnings to chip stacks
+    for (const [player, amount] of winnings) {
+      player.chips += amount;
+    }
+
+    const allWinners = [...winnings.keys()];
+    for (const p of G.players) p.winner = allWinners.includes(p);
+    const totalPot = sidePots.reduce((sum, pot) => sum + pot.amount, 0);
+    finishHand(allWinners, totalPot, displayHand);
+  }, 700);
+}
+
+// Award pot when all opponents fold
+function awardFoldWin(winner) {
+  winner.chips += G.pot;
+  const totalPot = G.pot;
+  winner.winner = true;
+  finishHand([winner], totalPot, null);
+}
+
+// Common hand completion: stats, history, overlay
+function finishHand(winners, totalPot, hand) {
+  G.pot = 0;
+  G.phase = 'done';
+  render();
+
+  const isYou = winners.some(w => w.human);
+  G.stats.handsPlayed++;
+  if (isYou) G.stats.handsWon++;
+
+  // Bluff detection: only count raises with high-card-only hands (true bluffs)
+  const humanRaised = G.handActions.some(a => a.idx === 0 && (a.action === 'raise' || a.action === 'allin'));
+  const humanHand = G.players[0].holeCards.length ? bestHand(G.players[0].holeCards, G.community) : null;
+  if (humanRaised && humanHand && humanHand.rank === 0) {
+    G.stats.bluffAttempts++;
+    if (isYou) G.stats.bluffWon++;
+  }
+
   G.handHistory.unshift({
-    num:G.handNum,
-    scenario:G.scenario?G.scenario.name:null,
-    won:isYou,
-    handName:humanHand?HN[humanHand.rank]:'—',
-    pot,
-    blinds:`$${CUR_SB}/$${CUR_BB}`,
+    num: G.handNum,
+    scenario: G.scenario ? G.scenario.name : null,
+    won: isYou,
+    handName: humanHand ? HAND_NAMES[humanHand.rank] : '\u2014',
+    pot: totalPot,
+    blinds: '$' + CUR_SB + '/$' + CUR_BB,
   });
-  if(G.handHistory.length>20)G.handHistory.pop();
+  if (G.handHistory.length > 20) G.handHistory.pop();
 
-  let title=isYou?'You Win!':winners.length>1?'Split Pot!':`${winners[0].name} Wins`;
-  let body=winners.length>1?`${winners.map(w=>w.name).join(' & ')} each win $${share}`:`${winners[0].name} wins $${pot}`;
-  if(hand)body+=`\n${HN[hand.rank]}`;
-  setMsg(title);showOverlay(title,body);
+  const share = Math.floor(totalPot / winners.length);
+  let title = isYou ? 'You Win!' : winners.length > 1 ? 'Split Pot!' : winners[0].name + ' Wins';
+  let body = winners.length > 1
+    ? winners.map(w => w.name).join(' & ') + ' each win $' + share
+    : winners[0].name + ' wins $' + totalPot;
+  if (hand) body += '\n' + HAND_NAMES[hand.rank];
 
-  let recap=isYou?'Great hand! ':hand?`${winners[0].name} won with ${HN[hand.rank]}. `:`${winners[0].name} won. `;
-  if(G.scenario)recap+=`\nLesson recap — ${G.scenario.name}: ${G.scenario.lesson}`;
+  setMsg(title);
+  showOverlay(title, body);
+
+  let recap = isYou ? 'Great hand! ' : hand ? esc(winners[0].name) + ' won with ' + HAND_NAMES[hand.rank] + '. ' : esc(winners[0].name) + ' won. ';
+  if (G.scenario) recap += '\nLesson recap \u2014 ' + esc(G.scenario.name) + ': ' + esc(G.scenario.lesson);
   idleCoach(recap);
   updateStatsBar();
-  document.getElementById('history-section').style.display='block';
+  document.getElementById('history-section').style.display = 'block';
 }
-function nextHand(){closeOverlay();for(const p of G.players)p.winner=false;startHand();}
-function endGame(){setMsg('Game Over!');showOverlay('Game Over','You ran out of chips!');idleCoach('You ran out of chips. Click New Game to try again with all 16 educational scenarios.');}
 
-// ═══════════════════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════════════════
-function setMsg(t){document.getElementById('msg').textContent=t;}
-function cardHTML(card,faceDown){
-  if(faceDown)return`<div class="card card-back"></div>`;
-  const red=card.suit==='hearts'||card.suit==='diamonds',v=VN[card.value],s=SYM[card.suit];
-  return`<div class="card ${red?'red':'black'}"><div class="card-corner">${v}<br>${s}</div><div class="card-mid">${s}</div><div class="card-corner bot">${v}<br>${s}</div></div>`;
+function nextHand() {
+  closeOverlay();
+  for (const p of G.players) p.winner = false;
+  startHand();
 }
-function emptyCard(){return`<div class="card card-empty"></div>`;}
-function render(){
-  let ch='';for(let i=0;i<5;i++)ch+=i<G.community.length?cardHTML(G.community[i]):(G.phase!=='waiting'?emptyCard():'');
-  document.getElementById('comm-cards').innerHTML=ch;
-  document.getElementById('pot-val').textContent=`Pot: $${G.pot}`;
-  document.getElementById('bet-val').textContent=G.currentBet>0?`Current bet: $${G.currentBet}`:'';
-  for(let i=0;i<4;i++){
-    const p=G.players[i],pi=document.getElementById(`pi-${i}`);
-    pi.className='p-info';
-    if(i===G.currentIdx&&!p.folded&&!p.allIn)pi.classList.add('active');
-    if(p.folded)pi.classList.add('folded');if(p.winner)pi.classList.add('winner');
-    document.getElementById(`chips-${i}`).textContent=`$${p.chips}`;
-    document.getElementById(`bet-${i}`).textContent=p.roundBet>0?`Bet: $${p.roundBet}`:'';
-    let bd='';
-    if(i===G.dealerIdx&&G.phase!=='waiting')bd+=`<span class="badge bd">D</span>`;
-    if(i===G.sbIdx&&G.phase!=='waiting')bd+=`<span class="badge bs">SB</span>`;
-    if(i===G.bbIdx&&G.phase!=='waiting')bd+=`<span class="badge bb">BB</span>`;
-    if(p.allIn)bd+=`<span class="badge ba">ALL IN</span>`;
-    document.getElementById(`bdg-${i}`).innerHTML=bd;
-    let ph='';
-    if(p.holeCards.length===2){
-      if(p.folded)ph=`<div style="opacity:.25;display:flex;gap:5px">${cardHTML(null,true)}${cardHTML(null,true)}</div>`;
-      else if(p.human||p.showCards)ph=cardHTML(p.holeCards[0])+cardHTML(p.holeCards[1]);
-      else ph=cardHTML(null,true)+cardHTML(null,true);
+
+function endGame() {
+  setMsg('Game Over!');
+  showOverlay('Game Over', 'You ran out of chips!');
+  idleCoach('You ran out of chips. Click New Game to try again with all 16 educational scenarios.');
+}
+
+// =====================================================================
+// RENDERING
+// =====================================================================
+function setMsg(text) { document.getElementById('msg').textContent = text; }
+
+function cardHTML(card, faceDown) {
+  if (faceDown) return '<div class="card card-back"></div>';
+  const isRed = card.suit === 'hearts' || card.suit === 'diamonds';
+  const v = esc(VALUE_SHORT[card.value]);
+  const s = SUIT_SYMBOLS[card.suit];
+  return '<div class="card ' + (isRed ? 'red' : 'black') + '">' +
+    '<div class="card-corner">' + v + '<br>' + s + '</div>' +
+    '<div class="card-mid">' + s + '</div>' +
+    '<div class="card-corner bot">' + v + '<br>' + s + '</div></div>';
+}
+
+function emptyCard() { return '<div class="card card-empty"></div>'; }
+
+function render() {
+  // Community cards
+  let commHTML = '';
+  for (let i = 0; i < 5; i++) {
+    commHTML += i < G.community.length ? cardHTML(G.community[i]) : (G.phase !== 'waiting' ? emptyCard() : '');
+  }
+  document.getElementById('comm-cards').innerHTML = commHTML;
+
+  // Pot display
+  document.getElementById('pot-val').textContent = 'Pot: $' + G.pot;
+  document.getElementById('bet-val').textContent = G.currentBet > 0 ? 'Current bet: $' + G.currentBet : '';
+
+  // Side pot indicator
+  const sidePotEl = document.getElementById('side-pots');
+  const sidePots = (G.phase !== 'waiting' && G.phase !== 'done') ? calculateSidePots() : [];
+  if (sidePots.length > 1) {
+    sidePotEl.textContent = sidePots.map((pot, i) =>
+      (i === 0 ? 'Main' : 'Side ' + i) + ': $' + pot.amount
+    ).join(' | ');
+  } else {
+    sidePotEl.textContent = '';
+  }
+
+  // Player areas
+  for (let i = 0; i < PLAYER_COUNT; i++) {
+    const p = G.players[i];
+    const infoEl = document.getElementById('pi-' + i);
+    infoEl.className = 'p-info';
+    if (i === G.currentIdx && !p.folded && !p.allIn) infoEl.classList.add('active');
+    if (p.folded) infoEl.classList.add('folded');
+    if (p.winner) infoEl.classList.add('winner');
+
+    document.getElementById('chips-' + i).textContent = '$' + p.chips;
+    document.getElementById('bet-' + i).textContent = p.roundBet > 0 ? 'Bet: $' + p.roundBet : '';
+
+    // Badges
+    let badges = '';
+    if (i === G.dealerIdx && G.phase !== 'waiting') badges += '<span class="badge bd">D</span>';
+    if (i === G.sbIdx && G.phase !== 'waiting') badges += '<span class="badge bs">SB</span>';
+    if (i === G.bbIdx && G.phase !== 'waiting') badges += '<span class="badge bb">BB</span>';
+    if (p.allIn) badges += '<span class="badge ba">ALL IN</span>';
+    document.getElementById('bdg-' + i).innerHTML = badges;
+
+    // Hole cards
+    let cardsHTML = '';
+    if (p.holeCards.length === 2) {
+      if (p.folded) {
+        cardsHTML = '<div style="opacity:.25;display:flex;gap:5px">' + cardHTML(null, true) + cardHTML(null, true) + '</div>';
+      } else if (p.human || p.showCards) {
+        cardsHTML = cardHTML(p.holeCards[0]) + cardHTML(p.holeCards[1]);
+      } else {
+        cardsHTML = cardHTML(null, true) + cardHTML(null, true);
+      }
     }
-    document.getElementById(`pc-${i}`).innerHTML=ph;
+    document.getElementById('pc-' + i).innerHTML = cardsHTML;
   }
 }
-function showOverlay(title,body){
-  document.getElementById('ov-title').textContent=title;document.getElementById('ov-body').textContent=body;
-  document.getElementById('ov-btn').textContent='Next Hand';document.getElementById('ov-btn').onclick=nextHand;
-  if(G.players[0].chips<=0){document.getElementById('ov-btn').textContent='New Game';document.getElementById('ov-btn').onclick=()=>{closeOverlay();startGame();};}
-  document.getElementById('overlay').style.display='block';
-}
-function closeOverlay(){document.getElementById('overlay').style.display='none';}
-function showButtons(){
-  const p=G.players[0],call=G.currentBet-p.roundBet,canCheck=call===0;
-  let h=`<button class="btn btn-fold" onclick="act(0,'fold',0)">Fold</button>`;
-  if(canCheck)h+=`<button class="btn btn-check" onclick="act(0,'check',0)">Check</button>`;
-  else{const a=Math.min(call,p.chips);h+=`<button class="btn btn-call" onclick="act(0,'call',0)">${p.chips<=call?`All-In $${a}`:`Call $${a}`}</button>`;}
-  if(p.chips>call)h+=`<button class="btn btn-raise" onclick="act(0,'raise',+document.getElementById('r-input').value)">Raise</button>`;
-  if(p.chips>0&&(call===0||p.chips>call))h+=`<button class="btn btn-allin" onclick="act(0,'allin',0)">All-In</button>`;
-  document.getElementById('btns').innerHTML=h;
-  if(p.chips>call){
-    const minBet=G.currentBet+G.minRaise,maxBet=p.chips+p.roundBet,def=Math.min(minBet+CUR_BB,maxBet);
-    const sl=document.getElementById('r-slider'),inp=document.getElementById('r-input');
-    sl.min=minBet;sl.max=maxBet;sl.value=def;inp.min=minBet;inp.max=maxBet;inp.value=def;
-    document.getElementById('raise-row').style.display='flex';
+
+function showOverlay(title, body) {
+  document.getElementById('ov-title').textContent = title;
+  document.getElementById('ov-body').textContent = body;
+  document.getElementById('ov-btn').textContent = 'Next Hand';
+  document.getElementById('ov-btn').onclick = nextHand;
+  if (G.players[0].chips <= 0) {
+    document.getElementById('ov-btn').textContent = 'New Game';
+    document.getElementById('ov-btn').onclick = function() { closeOverlay(); startGame(); };
   }
-}
-function hideButtons(){document.getElementById('btns').innerHTML='';document.getElementById('raise-row').style.display='none';}
-document.getElementById('r-slider').addEventListener('input',function(){document.getElementById('r-input').value=this.value;});
-document.getElementById('r-input').addEventListener('input',function(){const sl=document.getElementById('r-slider'),v=Math.min(Math.max(+this.value,+sl.min),+sl.max);sl.value=v;this.value=v;});
-
-// ═══════════════════════════════════════════════════════════════════
-// STATS BAR & HISTORY
-// ═══════════════════════════════════════════════════════════════════
-function updateStatsBar(){
-  if(!G.stats.handsPlayed){document.getElementById('stats-bar').style.display='none';return;}
-  const wr=Math.round(G.stats.handsWon/G.stats.handsPlayed*100);
-  const avgStack=Math.round(G.players.reduce((s,p)=>s+p.chips,0)/Math.max(1,G.players.filter(p=>p.chips>0).length));
-  const bar=document.getElementById('stats-bar');
-  bar.style.display='flex';
-  bar.innerHTML=`
-    <div class="stat-item"><div class="stat-val">${G.handNum}</div><div class="stat-lbl">hands</div></div>
-    <div class="stat-item"><div class="stat-val" style="color:${wr>=50?'#44cc88':'#cc5544'}">${wr}%</div><div class="stat-lbl">win rate</div></div>
-    <div class="stat-item"><div class="stat-val">${G.stats.bluffAttempts}</div><div class="stat-lbl">bluffs</div></div>
-    <div class="stat-item"><div class="stat-val">$${CUR_SB}/$${CUR_BB}</div><div class="stat-lbl">blinds</div></div>`;
-}
-function toggleHistory(){
-  const body=document.getElementById('history-body');
-  const arrow=document.getElementById('history-arrow');
-  const open=body.style.display==='block';
-  body.style.display=open?'none':'block';
-  arrow.innerHTML=open?'&#9660;':'&#9650;';
-  if(!open)renderHistory();
-}
-function renderHistory(){
-  const body=document.getElementById('history-body');
-  if(!G.handHistory.length){body.innerHTML='<div class="hist-item" style="color:#555">No hands yet</div>';return;}
-  body.innerHTML=G.handHistory.map(h=>`
-    <div class="hist-item">
-      <span class="${h.won?'hist-win':'hist-lose'}">${h.won?'▲ Won':'▼ Lost'}</span>
-      &nbsp;#${h.num} — ${h.handName} — Pot: $${h.pot} — ${h.blinds}
-      ${h.scenario?`<br><span style="color:#886622;font-size:.68rem">📚 ${h.scenario}</span>`:''}
-    </div>`).join('');
+  document.getElementById('overlay').style.display = 'block';
 }
 
-// ═══════════════════════════════════════════════════════════════════
+function closeOverlay() { document.getElementById('overlay').style.display = 'none'; }
+
+function showButtons() {
+  const p = G.players[0];
+  const callCost = G.currentBet - p.roundBet;
+  const canCheck = callCost === 0;
+
+  let html = '<button class="btn btn-fold" onclick="act(0,\'fold\',0)">Fold</button>';
+
+  if (canCheck) {
+    html += '<button class="btn btn-check" onclick="act(0,\'check\',0)">Check</button>';
+  } else {
+    const amt = Math.min(callCost, p.chips);
+    html += '<button class="btn btn-call" onclick="act(0,\'call\',0)">' +
+      (p.chips <= callCost ? 'All-In $' + amt : 'Call $' + amt) + '</button>';
+  }
+
+  if (p.chips > callCost) {
+    html += '<button class="btn btn-raise" onclick="act(0,\'raise\',validateRaiseAmount(+document.getElementById(\'r-input\').value))">Raise</button>';
+  }
+
+  if (p.chips > 0 && (callCost === 0 || p.chips > callCost)) {
+    html += '<button class="btn btn-allin" onclick="act(0,\'allin\',0)">All-In</button>';
+  }
+
+  document.getElementById('btns').innerHTML = html;
+
+  if (p.chips > callCost) {
+    const minBet = G.currentBet + G.minRaise;
+    const maxBet = p.chips + p.roundBet;
+    const defaultBet = Math.min(minBet + CUR_BB, maxBet);
+    const slider = document.getElementById('r-slider');
+    const input = document.getElementById('r-input');
+    slider.min = minBet; slider.max = maxBet; slider.value = defaultBet;
+    input.min = minBet; input.max = maxBet; input.value = defaultBet;
+    document.getElementById('raise-row').style.display = 'flex';
+  }
+
+  G.awaitingAction = true;
+  document.getElementById('kb-help').style.display = 'block';
+}
+
+function hideButtons() {
+  document.getElementById('btns').innerHTML = '';
+  document.getElementById('raise-row').style.display = 'none';
+  G.awaitingAction = false;
+  document.getElementById('kb-help').style.display = 'none';
+}
+
+// Slider/input sync with validation
+document.getElementById('r-slider').addEventListener('input', function() {
+  document.getElementById('r-input').value = this.value;
+});
+document.getElementById('r-input').addEventListener('input', function() {
+  const slider = document.getElementById('r-slider');
+  const clamped = Math.min(Math.max(parseInt(this.value, 10) || +slider.min, +slider.min), +slider.max);
+  slider.value = clamped;
+  this.value = clamped;
+});
+
+// =====================================================================
+// STATS BAR & HAND HISTORY
+// =====================================================================
+function updateStatsBar() {
+  if (!G.stats.handsPlayed) { document.getElementById('stats-bar').style.display = 'none'; return; }
+  const winRate = Math.round(G.stats.handsWon / G.stats.handsPlayed * 100);
+  const bar = document.getElementById('stats-bar');
+  bar.style.display = 'flex';
+  bar.innerHTML =
+    '<div class="stat-item"><div class="stat-val">' + G.handNum + '</div><div class="stat-lbl">hands</div></div>' +
+    '<div class="stat-item"><div class="stat-val" style="color:' + (winRate >= 50 ? '#44cc88' : '#cc5544') + '">' + winRate + '%</div><div class="stat-lbl">win rate</div></div>' +
+    '<div class="stat-item"><div class="stat-val">' + G.stats.bluffAttempts + '</div><div class="stat-lbl">bluffs</div></div>' +
+    '<div class="stat-item"><div class="stat-val">$' + CUR_SB + '/$' + CUR_BB + '</div><div class="stat-lbl">blinds</div></div>';
+}
+
+function toggleHistory() {
+  const body = document.getElementById('history-body');
+  const arrow = document.getElementById('history-arrow');
+  const open = body.style.display === 'block';
+  body.style.display = open ? 'none' : 'block';
+  arrow.innerHTML = open ? '&#9660;' : '&#9650;';
+  if (!open) renderHistory();
+}
+
+function renderHistory() {
+  const body = document.getElementById('history-body');
+  if (!G.handHistory.length) {
+    body.innerHTML = '<div class="hist-item" style="color:#555">No hands yet</div>';
+    return;
+  }
+  body.innerHTML = G.handHistory.map(function(h) {
+    return '<div class="hist-item">' +
+      '<span class="' + (h.won ? 'hist-win' : 'hist-lose') + '">' + (h.won ? '\u25b2 Won' : '\u25bc Lost') + '</span>' +
+      '&nbsp;#' + h.num + ' \u2014 ' + esc(h.handName) + ' \u2014 Pot: $' + h.pot + ' \u2014 ' + esc(h.blinds) +
+      (h.scenario ? '<br><span style="color:#886622;font-size:.68rem">\ud83d\udcda ' + esc(h.scenario) + '</span>' : '') +
+      '</div>';
+  }).join('');
+}
+
+// =====================================================================
 // DIFFICULTY MODE
-// ═══════════════════════════════════════════════════════════════════
-function setDiff(mode){
-  G_DIFF=mode;
-  localStorage.setItem('poker-diff',mode);
-  document.getElementById('diff-beginner').classList.toggle('active',mode==='beginner');
-  document.getElementById('diff-expert').classList.toggle('active',mode==='expert');
-  if(G.phase!=='waiting'&&G.players[0].holeCards.length)showCoach();
+// =====================================================================
+function setDiff(mode) {
+  G_DIFF = mode;
+  localStorage.setItem('poker-diff', mode);
+  document.getElementById('diff-beginner').classList.toggle('active', mode === 'beginner');
+  document.getElementById('diff-expert').classList.toggle('active', mode === 'expert');
+  if (G.phase !== 'waiting' && G.players[0].holeCards.length) showCoach();
 }
-// Apply saved difficulty on load
-document.getElementById(`diff-${G_DIFF}`).classList.add('active');
-document.getElementById(`diff-${G_DIFF==='beginner'?'expert':'beginner'}`).classList.remove('active');
+document.getElementById('diff-' + G_DIFF).classList.add('active');
+document.getElementById('diff-' + (G_DIFF === 'beginner' ? 'expert' : 'beginner')).classList.remove('active');
 
-// ═══════════════════════════════════════════════════════════════════
-// ══  POKER COACH  ══════════════════════════════════════════════════
-// ═══════════════════════════════════════════════════════════════════
-function idleCoach(msg){
-  document.getElementById('coach-idle').innerHTML=`<span style="line-height:1.7">${(msg||'Waiting for your turn…').replace(/\n/g,'<br><br>')}</span>`;
-  document.getElementById('coach-idle').style.display='block';
-  document.getElementById('coach-body').style.display='none';
-}
-function showCoach(){
-  document.getElementById('coach-idle').style.display='none';
-  document.getElementById('coach-body').style.display='block';
-  document.getElementById('coach-body').innerHTML=buildCoachHTML();
+// =====================================================================
+// POKER COACH
+// =====================================================================
+function idleCoach(msg) {
+  const el = document.getElementById('coach-idle');
+  el.innerHTML = '<span style="line-height:1.7">' + (msg || 'Waiting for your turn\u2026').replace(/\n/g, '<br><br>') + '</span>';
+  el.style.display = 'block';
+  document.getElementById('coach-body').style.display = 'none';
 }
 
-// ── HELPERS ─────────────────────────────────────────────────────────
-function getPosition(){if(G.dealerIdx===0)return'BTN';if(G.sbIdx===0)return'SB';if(G.bbIdx===0)return'BB';return'UTG';}
-function sec(title,content,id=''){return`<div class="csec"${id?` id="${id}"`:''}><div class="csec-title">${title}</div><div class="csec-content">${content}</div></div>`;}
-function activePlayers(){return G.players.filter(p=>p.chips>0);}
-
-// ── SCENARIO BANNER ─────────────────────────────────────────────────
-function scenarioHTML(){
-  if(!G.scenario)return'';
-  const s=G.scenario;
-  return`<div class="csec" id="c-scenario">
-    <div class="csec-title">📚 Educational Hand ${G.scenarioIdx} of ${SCENARIOS.length}</div>
-    <div class="csec-content">
-      <div class="sc-name">${s.name}</div>
-      <span class="sc-concept">${s.concept}</span>
-      <div class="sc-lesson">${s.lesson}</div>
-    </div>
-  </div>`;
+function showCoach() {
+  document.getElementById('coach-idle').style.display = 'none';
+  document.getElementById('coach-body').style.display = 'block';
+  document.getElementById('coach-body').innerHTML = buildCoachHTML();
 }
 
-// ── STAGE / TABLE DYNAMICS ───────────────────────────────────────────
-function stageAdviceHTML(){
-  const alive=activePlayers();
-  const n=alive.length;
-  const blindIdx=Math.min(Math.floor((G.handNum-1)/5),BLIND_SCHEDULE.length-1);
-  const avgStack=Math.round(alive.reduce((s,p)=>s+p.chips,0)/Math.max(1,n));
-  const bbs=Math.round(avgStack/CUR_BB);
+// -- Helpers --
+function getPosition() {
+  if (G.dealerIdx === 0) return 'BTN';
+  if (G.sbIdx === 0) return 'SB';
+  if (G.bbIdx === 0) return 'BB';
+  return 'UTG';
+}
 
-  if(n<=2){
-    return sec('🎯 Heads-Up Mode — Strategy Shift',`
-      <div class="stage-box stage-hu">
-        <strong style="color:#ff9966">Everything changes heads-up.</strong><br>
-        Play nearly EVERY hand — any pair, any ace, any king, any suited connector.
-        Folding pre-flop heads-up surrenders initiative and is usually wrong.<br><br>
-        <strong>BTN (dealer) acts LAST post-flop</strong> — an enormous advantage. Raise 2.5–3× from BTN almost every time.
-        Bluff frequently on dry boards when checked to. Apply constant pressure.
-        Only fold to big resistance when you have genuine air and no draw.
-      </div>`,'c-stage');
+function coachSection(title, content, id) {
+  return '<div class="csec"' + (id ? ' id="' + esc(id) + '"' : '') + '><div class="csec-title">' + title + '</div><div class="csec-content">' + content + '</div></div>';
+}
+
+function activePlayers() { return G.players.filter(p => p.chips > 0); }
+
+// -- Scenario Banner --
+function scenarioHTML() {
+  if (!G.scenario) return '';
+  const s = G.scenario;
+  return '<div class="csec" id="c-scenario">' +
+    '<div class="csec-title">\ud83d\udcda Educational Hand ' + G.scenarioIdx + ' of ' + SCENARIOS.length + '</div>' +
+    '<div class="csec-content">' +
+    '<div class="sc-name">' + esc(s.name) + '</div>' +
+    '<span class="sc-concept">' + esc(s.concept) + '</span>' +
+    '<div class="sc-lesson">' + esc(s.lesson) + '</div>' +
+    '</div></div>';
+}
+
+// -- Stage / Table Dynamics --
+function stageAdviceHTML() {
+  const alive = activePlayers();
+  const n = alive.length;
+  const blindIdx = Math.min(Math.floor((G.handNum - 1) / HANDS_PER_BLIND_LEVEL), BLIND_SCHEDULE.length - 1);
+  const avgStack = Math.round(alive.reduce((sum, p) => sum + p.chips, 0) / Math.max(1, n));
+  const bbs = Math.round(avgStack / CUR_BB);
+
+  if (n <= 2) {
+    return coachSection('\ud83c\udfaf Heads-Up Mode \u2014 Strategy Shift',
+      '<div class="stage-box stage-hu">' +
+      '<strong style="color:#ff9966">Everything changes heads-up.</strong><br>' +
+      'Play nearly EVERY hand \u2014 any pair, any ace, any king, any suited connector. ' +
+      'Folding pre-flop heads-up surrenders initiative and is usually wrong.<br><br>' +
+      '<strong>BTN (dealer) acts LAST post-flop</strong> \u2014 an enormous advantage. Raise 2.5\u20133\u00d7 from BTN almost every time. ' +
+      'Bluff frequently on dry boards when checked to. Apply constant pressure.</div>', 'c-stage');
   }
-  if(n===3){
-    return sec('⚡ 3-Handed — Loosen Up',`
-      <div class="stage-box stage-sh">
-        <strong style="color:#ffcc44">Expand your range significantly.</strong><br>
-        Medium pairs (66+), suited aces (A2s+), and any two broadway cards are all strong.
-        You're posting a blind every 1–2 hands — passive, tight play bleeds chips fast.<br><br>
-        Steal from the BTN aggressively. 3-bet lighter with hands like KQs or 99.
-        Be the aggressor — short-handed, aggression wins far more pots than patience.
-      </div>`,'c-stage');
+  if (n === 3) {
+    return coachSection('\u26a1 3-Handed \u2014 Loosen Up',
+      '<div class="stage-box stage-sh">' +
+      '<strong style="color:#ffcc44">Expand your range significantly.</strong><br>' +
+      'Medium pairs (66+), suited aces (A2s+), and any two broadway cards are all strong. ' +
+      'You\'re posting a blind every 1\u20132 hands \u2014 passive, tight play bleeds chips fast.<br><br>' +
+      'Steal from the BTN aggressively. 3-bet lighter with hands like KQs or 99.</div>', 'c-stage');
   }
-  if(blindIdx>=1){
-    return sec(`🔺 Blinds Escalating — $${CUR_SB}/$${CUR_BB}`,`
-      <div class="stage-box stage-escalate">
-        <strong style="color:#ffaa44">Stack pressure is growing.</strong><br>
-        Average stack is ~$${avgStack} (~${bbs} big blinds).
-        ${bbs<15?`<strong>Under 15BB: switch to shove-or-fold poker.</strong> Raising small and folding to 3-bets wastes chips. Open-shove your strong hands.`:
-        bbs<25?'Under 25BB: tighten opening ranges, avoid marginal spots. Every chip matters more now.':
-        'Blind pressure is real but manageable. Stay selective and keep pressure on shorter stacks.'}
-      </div>`,'c-stage');
+  if (blindIdx >= 1) {
+    return coachSection('\ud83d\udd3a Blinds Escalating \u2014 $' + CUR_SB + '/$' + CUR_BB,
+      '<div class="stage-box stage-escalate">' +
+      '<strong style="color:#ffaa44">Stack pressure is growing.</strong><br>' +
+      'Average stack is ~$' + avgStack + ' (~' + bbs + ' big blinds). ' +
+      (bbs < 15 ? '<strong>Under 15BB: switch to shove-or-fold poker.</strong> Open-shove your strong hands.' :
+       bbs < 25 ? 'Under 25BB: tighten opening ranges, avoid marginal spots. Every chip matters more now.' :
+       'Blind pressure is real but manageable. Stay selective and keep pressure on shorter stacks.') +
+      '</div>', 'c-stage');
   }
   return '';
 }
 
-// ── POSITION ─────────────────────────────────────────────────────────
-function positionHTML(){
-  const pos=getPosition();
-  const isHU=activePlayers().length<=2;
-  const info={
-    BTN:{full:'Button (Dealer)',color:'#00dd88',order:'You act LAST post-flop — the most powerful seat.',
-      tip:isHU?'Heads-up BTN: you have a massive edge. Raise almost every hand. Act last post-flop with full information — use this relentlessly. C-bet most flops. Double-barrel turns when opponents show weakness.':
-      'Late position is gold. You see every opponent act before you, giving you maximum information. Play wider ranges and use this advantage to bluff or extract value from weak opponents.'},
-    SB:{full:'Small Blind',color:'#ffcc44',order:'You act FIRST post-flop — the hardest position.',
-      tip:isHU?'Heads-up SB: you act FIRST post-flop — the disadvantaged position. Still call most raises from the BTN to see flops. But post-flop, play straightforwardly — check/call with strong hands, or check-raise to punish c-bet bluffers.':
-      'You\'ll act before everyone post-flop, telegraphing your hand to opponents. Play tighter, be cautious with marginal hands, and be prepared to face aggression without information.'},
-    BB:{full:'Big Blind',color:'#ffcc44',order:'You act second post-flop (after SB).',
-      tip:'You already invested money, so calling small raises to see the flop is often correct (you\'re getting a discount). Post-flop, defend aggressively against c-bets — opponents bluff flops constantly. Check-raise occasionally to keep them honest.'},
-    UTG:{full:'Under the Gun (Early)',color:'#ff8866',order:'You act FIRST pre-flop — the toughest spot.',
-      tip:'Playing first means zero information about your opponents. Stick to strong hands only (tier 4+). Any hand you play must be strong enough to call raises from all remaining players.'},
+// -- Position --
+function positionHTML() {
+  const pos = getPosition();
+  const isHU = activePlayers().length <= 2;
+  const info = {
+    BTN: { full: 'Button (Dealer)', color: '#00dd88', order: 'You act LAST post-flop \u2014 the most powerful seat.',
+      tip: isHU ? 'Heads-up BTN: you have a massive edge. Raise almost every hand. Act last post-flop with full information.' :
+      'Late position is gold. You see every opponent act before you, giving you maximum information. Play wider ranges.' },
+    SB: { full: 'Small Blind', color: '#ffcc44', order: 'You act FIRST post-flop \u2014 the hardest position.',
+      tip: isHU ? 'Heads-up SB: you act FIRST post-flop \u2014 the disadvantaged position. Still call most raises. Post-flop, play straightforwardly or check-raise to punish c-bet bluffers.' :
+      'You\'ll act before everyone post-flop. Play tighter, be cautious with marginal hands.' },
+    BB: { full: 'Big Blind', color: '#ffcc44', order: 'You act second post-flop (after SB).',
+      tip: 'You already invested money, so calling small raises is often correct (you\'re getting a discount). Post-flop, defend aggressively against c-bets \u2014 check-raise occasionally.' },
+    UTG: { full: 'Under the Gun (Early)', color: '#ff8866', order: 'You act FIRST pre-flop \u2014 the toughest spot.',
+      tip: 'Playing first means zero information. Stick to strong hands only (tier 4+).' },
   };
-  const d=info[pos];
-  return sec('Your Position',`<strong style="color:${d.color}">${d.full}</strong><br><em>${d.order}</em><br><br>${d.tip}`);
+  const d = info[pos];
+  return coachSection('Your Position',
+    '<strong style="color:' + d.color + '">' + esc(d.full) + '</strong><br><em>' + esc(d.order) + '</em><br><br>' + d.tip);
 }
 
-// ── PRE-FLOP HAND QUALITY ────────────────────────────────────────────
-function preflopTier(hole){
-  const[a,b]=[...hole].sort((x,y)=>y.value-x.value).map(c=>c.value);
-  const s=hole[0].suit===hole[1].suit,pair=a===b;
-  if(pair){if(a>=11)return 5;if(a>=8)return 4;if(a>=5)return 3;return 2;}
-  if(a===14){if(b>=13)return 5;if(b>=12)return s?5:4;if(b>=11)return s?4:3;if(b>=10)return s?4:3;return s?3:2;}
-  if(a===13){if(b>=12)return s?4:3;if(b>=11)return 3;if(b>=10)return s?3:2;return s?2:1;}
-  if(a===12){if(b>=11)return s?3:2;if(b>=10)return s?3:2;return s?2:1;}
-  if(s&&a-b<=2&&a>=8)return 3;if(s&&a-b<=2)return 2;if(a-b<=1&&a>=10)return 2;return 1;
+// -- Pre-flop Hand Quality --
+function preflopTier(hole) {
+  const [a, b] = [...hole].sort((x, y) => y.value - x.value).map(c => c.value);
+  const suited = hole[0].suit === hole[1].suit;
+  const pair = a === b;
+  if (pair) { if (a >= 11) return 5; if (a >= 8) return 4; if (a >= 5) return 3; return 2; }
+  if (a === 14) { if (b >= 13) return 5; if (b >= 12) return suited ? 5 : 4; if (b >= 10) return suited ? 4 : 3; return suited ? 3 : 2; }
+  if (a === 13) { if (b >= 12) return suited ? 4 : 3; if (b >= 11) return 3; if (b >= 10) return suited ? 3 : 2; return suited ? 2 : 1; }
+  if (a === 12) { if (b >= 11) return suited ? 3 : 2; if (b >= 10) return suited ? 3 : 2; return suited ? 2 : 1; }
+  if (suited && a - b <= 2 && a >= 8) return 3;
+  if (suited && a - b <= 2) return 2;
+  if (a - b <= 1 && a >= 10) return 2;
+  return 1;
 }
-function holeCardName(hole){
-  const[a,b]=[...hole].sort((x,y)=>y.value-x.value);
-  const s=hole[0].suit===hole[1].suit,pair=a.value===b.value,gap=a.value-b.value;
-  if(pair)return`Pocket ${PNAME[a.value]}`;
-  const suf=s?' Suited':' Offsuit';
-  if(gap===1)return`${VNAME[a.value]}-${VNAME[b.value]} Connector${suf}`;
-  if(gap===2)return`${VNAME[a.value]}-${VNAME[b.value]} One-Gap${suf}`;
-  return`${VNAME[a.value]}-${VNAME[b.value]}${suf}`;
+
+function holeCardName(hole) {
+  const [a, b] = [...hole].sort((x, y) => y.value - x.value);
+  const suited = hole[0].suit === hole[1].suit;
+  const pair = a.value === b.value;
+  const gap = a.value - b.value;
+  if (pair) return 'Pocket ' + PLURAL_NAME[a.value];
+  const suf = suited ? ' Suited' : ' Offsuit';
+  if (gap === 1) return VALUE_NAME[a.value] + '-' + VALUE_NAME[b.value] + ' Connector' + suf;
+  if (gap === 2) return VALUE_NAME[a.value] + '-' + VALUE_NAME[b.value] + ' One-Gap' + suf;
+  return VALUE_NAME[a.value] + '-' + VALUE_NAME[b.value] + suf;
 }
-const TIER_INFO=[null,
-  {label:'Weak',color:'#ff6666',bar:15,tip:'This hand rarely wins without significant improvement. Fold unless you can see the flop for free.'},
-  {label:'Marginal',color:'#ff9955',bar:32,tip:'Playable in position or for a tiny price. Not worth calling large raises.'},
-  {label:'Playable',color:'#ffcc44',bar:52,tip:'Solid hand worth seeing the flop. Raise or call a reasonable raise.'},
-  {label:'Strong',color:'#88dd44',bar:72,tip:'Premium hand. Raise for value and protection — build a big pot.'},
-  {label:'Premium',color:'#00dd88',bar:92,tip:'Top-tier starting hand. Play aggressively — these are your money-making hands.'},
+
+const TIER_INFO = [null,
+  { label: 'Weak', color: '#ff6666', bar: 15, tip: 'This hand rarely wins without significant improvement. Fold unless you can see the flop for free.' },
+  { label: 'Marginal', color: '#ff9955', bar: 32, tip: 'Playable in position or for a tiny price. Not worth calling large raises.' },
+  { label: 'Playable', color: '#ffcc44', bar: 52, tip: 'Solid hand worth seeing the flop. Raise or call a reasonable raise.' },
+  { label: 'Strong', color: '#88dd44', bar: 72, tip: 'Premium hand. Raise for value and protection \u2014 build a big pot.' },
+  { label: 'Premium', color: '#00dd88', bar: 92, tip: 'Top-tier starting hand. Play aggressively \u2014 these are your money-making hands.' },
 ];
-function preflopHandHTML(){
-  const tier=preflopTier(G.players[0].holeCards),name=holeCardName(G.players[0].holeCards),t=TIER_INFO[tier];
-  return sec('Your Starting Hand',
-    `<strong>${name}</strong><div class="sbar-wrap"><div class="sbar"><div class="sbar-fill" style="width:${t.bar}%;background:${t.color}"></div></div><span class="sbar-label" style="color:${t.color}">${t.label}</span></div><br>${t.tip}`);
+
+function preflopHandHTML() {
+  const tier = preflopTier(G.players[0].holeCards);
+  const name = holeCardName(G.players[0].holeCards);
+  const t = TIER_INFO[tier];
+  return coachSection('Your Starting Hand',
+    '<strong>' + esc(name) + '</strong>' +
+    '<div class="sbar-wrap"><div class="sbar"><div class="sbar-fill" style="width:' + t.bar + '%;background:' + t.color + '"></div></div>' +
+    '<span class="sbar-label" style="color:' + t.color + '">' + esc(t.label) + '</span></div><br>' + t.tip);
 }
 
-// ── MADE HAND ───────────────────────────────────────────────────────
-function madeHandHTML(){
-  if(G.community.length===0)return'';
-  const p=G.players[0],h=bestHand(p.holeCards,G.community);
-  const boardHigh=G.community.map(c=>c.value).sort((a,b)=>b-a)[0];
-  let detail='';
-  if(h.rank===0)detail=`Your best card is <strong>${VNAME[h.key[0]]}</strong>. No pair — you need to improve or bluff.`;
-  else if(h.rank===1){
-    detail=`<strong>Pair of ${PNAME[h.key[0]]}</strong>. `;
-    detail+=h.key[0]>=boardHigh?`That's <em>top pair</em> — the highest pair possible on this board.`:`This is <em>middle/bottom pair</em> — weaker than top pair.`;
-    detail+=` Kicker: <strong>${VNAME[h.key[1]]}</strong> — ${h.key[1]>=12?'excellent kicker, hard to be "out-kicked."':'weaker kicker — beware of opponents with the same pair but a higher side card.'}`;}
-  else if(h.rank===2)detail=`<strong>${VNAME[h.key[0]]}s and ${VNAME[h.key[1]]}s</strong>. Two pair — solid, but watch for straights and flushes on the board.`;
-  else if(h.rank===3)detail=`<strong>Three ${VNAME[h.key[0]]}s</strong> — a strong hand. Bet to build the pot.`;
-  else if(h.rank===4)detail=`<strong>${VNAME[h.key[0]]}-high Straight</strong>. Strong — just watch for possible flushes.`;
-  else if(h.rank===5)detail=`<strong>${VNAME[h.key[0]]}-high Flush</strong>. Very strong — bet for value.`;
-  else if(h.rank===6)detail=`<strong>Full House: ${VNAME[h.key[0]]}s over ${VNAME[h.key[1]]}s</strong>. Monster! Get money in the pot.`;
-  else if(h.rank===7)detail=`<strong>Four of a Kind: ${VNAME[h.key[0]]}s</strong>. Near-unbeatable. Trap opponents into big pots.`;
-  else if(h.rank===8)detail=`<strong>Straight Flush!</strong> One of the rarest hands in poker. Go all-in.`;
-  const bar=[12,25,42,60,70,78,86,93,99][h.rank];
-  const col=['#ff6666','#ff8844','#ffbb33','#aadd33','#66cc55','#44bbaa','#44aaff','#aa88ff','#ff88ff'][h.rank];
-  return sec('Your Current Hand',
-    `<div class="sbar-wrap" style="margin-bottom:6px"><div class="sbar"><div class="sbar-fill" style="width:${bar}%;background:${col}"></div></div><span class="sbar-label">${HN[h.rank]}</span></div>${detail}`);
-}
+// -- Made Hand --
+function madeHandHTML() {
+  if (G.community.length === 0) return '';
+  const p = G.players[0];
+  const h = bestHand(p.holeCards, G.community);
+  const boardHigh = G.community.map(c => c.value).sort((a, b) => b - a)[0];
+  let detail = '';
 
-// ── DRAWS ────────────────────────────────────────────────────────────
-function detectDraws(hole,comm){
-  const all=[...hole,...comm],draws=[];
-  const sc={};for(const card of all)sc[card.suit]=(sc[card.suit]||0)+1;
-  for(const[suit,cnt]of Object.entries(sc)){
-    if(cnt===4){const outs=9,ruleN=comm.length<=3?4:2;
-      draws.push({name:'Flush Draw',suit,outs,
-        ruleStr:`~${outs*ruleN}% to complete (Rule of ${ruleN})`,
-        explain:`Four ${SYM[suit]} cards in play. Any of the remaining 9 ${SYM[suit]} cards completes your flush.`});}
+  if (h.rank === 0) detail = 'Your best card is <strong>' + VALUE_NAME[h.key[0]] + '</strong>. No pair \u2014 you need to improve or bluff.';
+  else if (h.rank === 1) {
+    detail = '<strong>Pair of ' + PLURAL_NAME[h.key[0]] + '</strong>. ';
+    detail += h.key[0] >= boardHigh ? 'That\'s <em>top pair</em> \u2014 the highest pair possible on this board.' : 'This is <em>middle/bottom pair</em> \u2014 weaker than top pair.';
+    detail += ' Kicker: <strong>' + VALUE_NAME[h.key[1]] + '</strong> \u2014 ' + (h.key[1] >= 12 ? 'excellent kicker.' : 'weaker kicker \u2014 beware of domination.');
   }
-  const vs=[...new Set(all.map(c=>c.value))];if(vs.includes(14))vs.push(1);
-  let found=false;
-  for(let lo=1;lo<=10&&!found;lo++){
-    const w=[lo,lo+1,lo+2,lo+3,lo+4],have=w.filter(v=>vs.includes(v));
-    if(have.length===4){
-      const sorted=[...have].sort((a,b)=>a-b),isOesd=sorted[3]-sorted[0]===3;
-      const ruleN=comm.length<=3?4:2;
-      if(isOesd)draws.push({name:'Open-Ended Straight Draw',outs:8,ruleStr:`~${8*ruleN}% to complete (Rule of ${ruleN})`,explain:`Four consecutive cards (${sorted.map(v=>VN[v]||v).join('-')}). Either end completes the straight — 8 outs total.`});
-      else{const missing=w.find(v=>!have.includes(v));draws.push({name:'Gutshot (Inside Straight)',outs:4,ruleStr:`~${4*ruleN}% to complete (Rule of ${ruleN})`,explain:`Need a ${VN[missing]||missing} in the middle. Only 4 outs — much weaker than an OESD. Rarely worth a large call.`});}
-      found=true;
+  else if (h.rank === 2) detail = '<strong>' + VALUE_NAME[h.key[0]] + 's and ' + VALUE_NAME[h.key[1]] + 's</strong>. Two pair \u2014 solid, but watch for straights and flushes.';
+  else if (h.rank === 3) detail = '<strong>Three ' + VALUE_NAME[h.key[0]] + 's</strong> \u2014 a strong hand. Bet to build the pot.';
+  else if (h.rank === 4) detail = '<strong>' + VALUE_NAME[h.key[0]] + '-high Straight</strong>. Strong \u2014 just watch for possible flushes.';
+  else if (h.rank === 5) detail = '<strong>' + VALUE_NAME[h.key[0]] + '-high Flush</strong>. Very strong \u2014 bet for value.';
+  else if (h.rank === 6) detail = '<strong>Full House: ' + VALUE_NAME[h.key[0]] + 's over ' + VALUE_NAME[h.key[1]] + 's</strong>. Monster! Get money in the pot.';
+  else if (h.rank === 7) detail = '<strong>Four of a Kind: ' + VALUE_NAME[h.key[0]] + 's</strong>. Near-unbeatable.';
+  else if (h.rank === 8) detail = '<strong>Straight Flush!</strong> One of the rarest hands in poker.';
+
+  const bar = [12, 25, 42, 60, 70, 78, 86, 93, 99][h.rank];
+  const col = ['#ff6666','#ff8844','#ffbb33','#aadd33','#66cc55','#44bbaa','#44aaff','#aa88ff','#ff88ff'][h.rank];
+  return coachSection('Your Current Hand',
+    '<div class="sbar-wrap" style="margin-bottom:6px"><div class="sbar"><div class="sbar-fill" style="width:' + bar + '%;background:' + col + '"></div></div><span class="sbar-label">' + HAND_NAMES[h.rank] + '</span></div>' + detail);
+}
+
+// -- Draw Detection --
+function detectDraws(hole, comm) {
+  const all = [...hole, ...comm];
+  const draws = [];
+
+  // Flush draws
+  const suitCounts = {};
+  for (const card of all) suitCounts[card.suit] = (suitCounts[card.suit] || 0) + 1;
+  for (const [suit, cnt] of Object.entries(suitCounts)) {
+    if (cnt === 4) {
+      const outs = 9;
+      const ruleN = comm.length <= 3 ? 4 : 2;
+      draws.push({
+        name: 'Flush Draw', suit, outs,
+        ruleStr: '~' + (outs * ruleN) + '% to complete (Rule of ' + ruleN + ')',
+        explain: 'Four ' + SUIT_SYMBOLS[suit] + ' cards in play. Any of the remaining 9 ' + SUIT_SYMBOLS[suit] + ' cards completes your flush.',
+      });
+    }
+  }
+
+  // Straight draws
+  const vals = [...new Set(all.map(c => c.value))];
+  if (vals.includes(14)) vals.push(1); // ace-low
+  let foundStraightDraw = false;
+  for (let lo = 1; lo <= 10 && !foundStraightDraw; lo++) {
+    const window = [lo, lo + 1, lo + 2, lo + 3, lo + 4];
+    const have = window.filter(v => vals.includes(v));
+    if (have.length === 4) {
+      const sorted = [...have].sort((a, b) => a - b);
+      const isOESD = sorted[3] - sorted[0] === 3;
+      const ruleN = comm.length <= 3 ? 4 : 2;
+      if (isOESD) {
+        draws.push({
+          name: 'Open-Ended Straight Draw', outs: 8,
+          ruleStr: '~' + (8 * ruleN) + '% to complete (Rule of ' + ruleN + ')',
+          explain: 'Four consecutive cards (' + sorted.map(v => VALUE_SHORT[v] || v).join('-') + '). Either end completes the straight \u2014 8 outs total.',
+        });
+      } else {
+        const missing = window.find(v => !have.includes(v));
+        draws.push({
+          name: 'Gutshot (Inside Straight)', outs: 4,
+          ruleStr: '~' + (4 * ruleN) + '% to complete (Rule of ' + ruleN + ')',
+          explain: 'Need a ' + (VALUE_SHORT[missing] || missing) + ' in the middle. Only 4 outs \u2014 much weaker than an OESD.',
+        });
+      }
+      foundStraightDraw = true;
     }
   }
   return draws;
 }
-function drawsHTML(){
-  if(G.community.length===0)return'';
-  const draws=detectDraws(G.players[0].holeCards,G.community);
-  if(draws.length===0)return'';
-  let html='';
-  for(const d of draws)html+=`<div style="margin-bottom:8px"><strong>${d.name}</strong> — <em>${d.outs} outs</em><br><span style="color:#aaa;font-size:.75rem">${d.ruleStr}</span><br>${d.explain}</div>`;
-  if(draws.length>=2){const total=Math.min(draws.reduce((s,d)=>s+d.outs,0),15);const ruleN=G.community.length<=3?4:2;html+=`<div style="margin-top:4px;padding:4px 6px;background:rgba(255,215,0,.08);border-radius:4px;font-size:.78rem"><strong style="color:#ffd700">Combo draw!</strong> Combined ~${total} outs ≈ ${total*ruleN}% equity — you may be the favorite!</div>`;}
-  html+=`<div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,.08);font-size:.75rem;color:#999"><strong style="color:#ccc">Rule of 2 &amp; 4:</strong> Multiply outs × 4 with two cards to come, × 2 with one card to come.</div>`;
-  return sec('Drawing Opportunities',html);
-}
 
-// ── POT ODDS ─────────────────────────────────────────────────────────
-function estimateEquity(){
-  const p=G.players[0],comm=G.community;
-  let eq=0;
-  if(comm.length===0){const tier=preflopTier(p.holeCards);eq=[0,.25,.35,.45,.55,.65][tier];}
-  else{const h=bestHand(p.holeCards,comm);eq=[.18,.35,.48,.58,.68,.76,.84,.92,.97][h.rank];
-    const draws=detectDraws(p.holeCards,comm);
-    for(const d of draws){const dEq=comm.length<=3?(d.outs*4/100):(d.outs*2/100);if(dEq>eq*.4)eq=Math.min(.99,eq+dEq*.5);}
+function drawsHTML() {
+  if (G.community.length === 0) return '';
+  const draws = detectDraws(G.players[0].holeCards, G.community);
+  if (draws.length === 0) return '';
+
+  let html = '';
+  for (const d of draws) {
+    html += '<div style="margin-bottom:8px"><strong>' + esc(d.name) + '</strong> \u2014 <em>' + d.outs + ' outs</em><br>' +
+      '<span style="color:#aaa;font-size:.75rem">' + esc(d.ruleStr) + '</span><br>' + d.explain + '</div>';
   }
-  return eq;
-}
-function potOddsHTML(){
-  const p=G.players[0],call=Math.max(0,G.currentBet-p.roundBet);
-  if(call===0)return'';
-  const pot=G.pot,total=pot+call,required=call/total,eq=estimateEquity();
-  const profitable=eq>=required,reqPct=Math.round(required*100),eqPct=Math.round(eq*100);
-  return sec('Pot Odds Analysis',
-    `<div style="margin-bottom:6px"><strong>Pot:</strong> $${pot} &nbsp;|&nbsp; <strong>Your call:</strong> $${call}</div>
-     <div style="margin-bottom:8px">The pot offers <em>${pot}:${call} odds</em> (${Math.round(pot/call*10)/10}:1). Break-even equity needed: <strong>${reqPct}%</strong>.</div>
-     <div style="margin-bottom:8px"><strong>Your estimated equity:</strong> ~${eqPct}%
-       <div class="sbar-wrap" style="margin-top:4px">
-         <div class="sbar"><div class="sbar-fill" style="width:${eqPct}%;background:${profitable?'#44cc88':'#cc4444'}"></div></div>
-         <span class="pill ${profitable?'pill-good':'pill-bad'}">${profitable?'✓ PROFITABLE':'✗ UNFAVORABLE'}</span>
-       </div>
-     </div>
-     ${profitable?`Your ~${eqPct}% equity exceeds the ${reqPct}% required. Over many hands, calling here is profitable.`:`You need ${reqPct}% equity but only have ~${eqPct}%. Unless you read a bluff, folding is mathematically correct.`}`);
+
+  if (draws.length >= 2) {
+    const total = Math.min(draws.reduce((s, d) => s + d.outs, 0), 15);
+    const ruleN = G.community.length <= 3 ? 4 : 2;
+    html += '<div style="margin-top:4px;padding:4px 6px;background:rgba(255,215,0,.08);border-radius:4px;font-size:.78rem">' +
+      '<strong style="color:#ffd700">Combo draw!</strong> Combined ~' + total + ' outs \u2248 ' + (total * ruleN) + '% equity \u2014 you may be the favorite!</div>';
+  }
+
+  html += '<div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,.08);font-size:.75rem;color:#999">' +
+    '<strong style="color:#ccc">Rule of 2 &amp; 4:</strong> Multiply outs \u00d7 4 with two cards to come, \u00d7 2 with one card to come.</div>';
+  return coachSection('Drawing Opportunities', html);
 }
 
-// ── OPPONENT READS ───────────────────────────────────────────────────
-function opponentReadsHTML(){
-  const reads=[];
-  for(let i=1;i<4;i++){
-    const p=G.players[i];
-    if(p.folded){reads.push(`<span style="color:#555">${p.name}: folded</span>`);continue;}
-    if(p.chips<=0){reads.push(`<span style="color:#444">${p.name}: eliminated</span>`);continue;}
-    const pfActs=G.handActions.filter(a=>a.idx===i&&a.phase==='preflop');
-    const postActs=G.handActions.filter(a=>a.idx===i&&a.phase!=='preflop');
-    const raised=pfActs.some(a=>a.action==='raise'||a.action==='allin');
-    const called=pfActs.some(a=>a.action==='call');
-    let read='';
-    if(pfActs.some(a=>a.action==='fold'))read=`<em>Folded pre-flop</em> — weak hand.`;
-    else if(raised)read=`<strong style="color:#ff9966">Raised pre-flop</strong> — indicates strength: pairs, big aces, strong connectors. Respect this.`;
-    else if(called)read=`<em>Called pre-flop</em> — wide range: medium pairs, connectors, broadway cards. Not necessarily strong.`;
-    else read=`<em>Checked (BB)</em> — could be anything from weak to a slow-played monster.`;
-    if(postActs.length>0){
-      const postRaised=postActs.some(a=>a.action==='raise'||a.action==='allin');
-      const postChecked=postActs.filter(a=>a.action==='check').length>0;
-      const postCalled=postActs.some(a=>a.action==='call');
-      if(postRaised)read+=` Post-flop <strong style="color:#ff6666">raise/bet</strong> = strong signal${raised?' (double aggression = very strong hand)':' — they connected with the board'}.`;
-      else if(postChecked)read+=` <span style="color:#999">Checked post-flop</span> — weakness or slow-play. Could be a check-raise trap on the next street.`;
-      else if(postCalled)read+=` <span style="color:#99aacc">Called post-flop</span> — has something: a pair, a draw, or calling down light.`;
+// -- Pot Odds --
+function estimateEquity() {
+  const p = G.players[0];
+  const comm = G.community;
+  const activeOpponents = G.players.filter(op => !op.folded && !op.human).length;
+  // More opponents = lower individual equity
+  const opponentDiscount = Math.max(0.6, 1 - activeOpponents * 0.08);
+
+  let eq;
+  if (comm.length === 0) {
+    const tier = preflopTier(p.holeCards);
+    eq = [0, 0.25, 0.35, 0.45, 0.55, 0.65][tier];
+  } else {
+    const h = bestHand(p.holeCards, comm);
+    eq = [0.18, 0.35, 0.48, 0.58, 0.68, 0.76, 0.84, 0.92, 0.97][h.rank];
+
+    // Factor in draw equity
+    const draws = detectDraws(p.holeCards, comm);
+    for (const d of draws) {
+      const drawEq = comm.length <= 3 ? (d.outs * 4 / 100) : (d.outs * 2 / 100);
+      if (drawEq > eq * 0.3) eq = Math.min(0.99, eq + drawEq * 0.5);
     }
+
+    // Board texture adjustments for weak made hands
+    if (h.rank <= 1) {
+      const boardSuitCounts = {};
+      for (const card of comm) boardSuitCounts[card.suit] = (boardSuitCounts[card.suit] || 0) + 1;
+      const maxSuit = Math.max(...Object.values(boardSuitCounts));
+      if (maxSuit >= 3) eq *= 0.85; // flush possible
+
+      const sortedVals = comm.map(card => card.value).sort((a, b) => a - b);
+      let connected = 0;
+      for (let i = 1; i < sortedVals.length; i++) {
+        if (sortedVals[i] - sortedVals[i - 1] <= 2) connected++;
+      }
+      if (connected >= 3) eq *= 0.85; // straight possible
+    }
+  }
+
+  eq *= opponentDiscount;
+  return Math.max(0.02, Math.min(0.98, eq));
+}
+
+function potOddsHTML() {
+  const p = G.players[0];
+  const callCost = Math.max(0, G.currentBet - p.roundBet);
+  if (callCost === 0) return '';
+
+  const pot = G.pot;
+  const total = pot + callCost;
+  const required = callCost / total;
+  const eq = estimateEquity();
+  const profitable = eq >= required;
+  const reqPct = Math.round(required * 100);
+  const eqPct = Math.round(eq * 100);
+
+  return coachSection('Pot Odds Analysis',
+    '<div style="margin-bottom:6px"><strong>Pot:</strong> $' + pot + ' &nbsp;|&nbsp; <strong>Your call:</strong> $' + callCost + '</div>' +
+    '<div style="margin-bottom:8px">The pot offers <em>' + pot + ':' + callCost + ' odds</em> (' + (Math.round(pot / callCost * 10) / 10) + ':1). Break-even equity needed: <strong>' + reqPct + '%</strong>.</div>' +
+    '<div style="margin-bottom:8px"><strong>Your estimated equity:</strong> ~' + eqPct + '%' +
+    '<div class="sbar-wrap" style="margin-top:4px">' +
+    '<div class="sbar"><div class="sbar-fill" style="width:' + eqPct + '%;background:' + (profitable ? '#44cc88' : '#cc4444') + '"></div></div>' +
+    '<span class="pill ' + (profitable ? 'pill-good' : 'pill-bad') + '">' + (profitable ? '\u2713 PROFITABLE' : '\u2717 UNFAVORABLE') + '</span></div></div>' +
+    (profitable
+      ? 'Your ~' + eqPct + '% equity exceeds the ' + reqPct + '% required. Over many hands, calling here is profitable.'
+      : 'You need ' + reqPct + '% equity but only have ~' + eqPct + '%. Unless you read a bluff, folding is mathematically correct.'));
+}
+
+// -- Opponent Reads --
+function opponentReadsHTML() {
+  const reads = [];
+  for (let i = 1; i < PLAYER_COUNT; i++) {
+    const p = G.players[i];
+    if (p.folded) { reads.push('<span style="color:#555">' + esc(p.name) + ': folded</span>'); continue; }
+    if (p.chips <= 0) { reads.push('<span style="color:#444">' + esc(p.name) + ': eliminated</span>'); continue; }
+
+    const pfActs = G.handActions.filter(a => a.idx === i && a.phase === 'preflop');
+    const postActs = G.handActions.filter(a => a.idx === i && a.phase !== 'preflop');
+    const raised = pfActs.some(a => a.action === 'raise' || a.action === 'allin');
+    const called = pfActs.some(a => a.action === 'call');
+
+    let read = '';
+    if (pfActs.some(a => a.action === 'fold')) read = '<em>Folded pre-flop</em> \u2014 weak hand.';
+    else if (raised) read = '<strong style="color:#ff9966">Raised pre-flop</strong> \u2014 indicates strength: pairs, big aces. Respect this.';
+    else if (called) read = '<em>Called pre-flop</em> \u2014 wide range: medium pairs, connectors. Not necessarily strong.';
+    else read = '<em>Checked (BB)</em> \u2014 could be anything from weak to a slow-played monster.';
+
+    if (postActs.length > 0) {
+      const postRaised = postActs.some(a => a.action === 'raise' || a.action === 'allin');
+      const postChecked = postActs.some(a => a.action === 'check');
+      const postCalled = postActs.some(a => a.action === 'call');
+      if (postRaised) read += ' Post-flop <strong style="color:#ff6666">raise/bet</strong> = strong signal' + (raised ? ' (double aggression = very strong hand)' : ' \u2014 they connected with the board') + '.';
+      else if (postChecked) read += ' <span style="color:#999">Checked post-flop</span> \u2014 weakness or slow-play.';
+      else if (postCalled) read += ' <span style="color:#99aacc">Called post-flop</span> \u2014 has something: a pair, a draw, or calling down light.';
+    }
+
     // Bet sizing tell
-    if(postActs.length>0){
-      const lastBet=postActs.filter(a=>a.action==='raise'||a.action==='allin').slice(-1)[0];
-      if(lastBet&&lastBet.amount>0){
-        const betRatio=G.pot>0?lastBet.amount/G.pot:0;
-        if(betRatio>1.2)read+=` <span style="color:#ff9966">Overbet</span> — unusual sizing often means either a monster or a scared bluff. Proceed with caution.`;
-        else if(betRatio<0.3&&betRatio>0)read+=` <span style="color:#aaa">Small bet</span> — weak sizing often probes for information. May be a blocking bet with a medium-strength hand.`;
+    if (postActs.length > 0) {
+      const lastBet = postActs.filter(a => a.action === 'raise' || a.action === 'allin').slice(-1)[0];
+      if (lastBet && lastBet.amount > 0) {
+        const betRatio = G.pot > 0 ? lastBet.amount / G.pot : 0;
+        if (betRatio > 1.2) read += ' <span style="color:#ff9966">Overbet</span> \u2014 often means a monster or a scared bluff.';
+        else if (betRatio < 0.3 && betRatio > 0) read += ' <span style="color:#aaa">Small bet</span> \u2014 may be a blocking bet with medium strength.';
       }
     }
-    reads.push(`<div style="margin-bottom:7px"><strong>${p.name}</strong>${p.allIn?' <span class="badge ba">ALL IN</span>':''}<br>${read}</div>`);
+
+    reads.push('<div style="margin-bottom:7px"><strong>' + esc(p.name) + '</strong>' + (p.allIn ? ' <span class="badge ba">ALL IN</span>' : '') + '<br>' + read + '</div>');
   }
-  return sec('Opponent Reads',reads.join(''));
+  return coachSection('Opponent Reads', reads.join(''));
 }
 
-// ── BLUFF OPPORTUNITIES ──────────────────────────────────────────────
-function bluffOpportunityHTML(){
-  if(G.community.length===0)return'';
-  const p=G.players[0];
-  const h=bestHand(p.holeCards,G.community);
-  if(h.rank>=2)return''; // made a real hand, no need for bluff tips
-  const draws=detectDraws(p.holeCards,G.community);
-  const call=Math.max(0,G.currentBet-p.roundBet);
-  const pos=getPosition();
-  const tips=[];
+// -- Bluff Opportunities --
+function bluffOpportunityHTML() {
+  if (G.community.length === 0) return '';
+  const p = G.players[0];
+  const h = bestHand(p.holeCards, G.community);
+  if (h.rank >= 2) return '';
 
-  // Position bluff: in position, no bet yet, dry board
-  const allChecked=G.phaseActions.filter(a=>a.idx!==0).every(a=>a.action==='check');
-  const boardSuits=G.community.map(c=>c.suit);
-  const suitCounts=boardSuits.reduce((m,s)=>{m[s]=(m[s]||0)+1;return m;},{});
-  const isDryBoard=Math.max(...Object.values(suitCounts))<=2&&
-    G.community.length>=3;
-  if(call===0&&(pos==='BTN'||pos==='UTG')&&h.rank<=1&&G.community.length>=3){
-    const isDry=isDryBoard&&!draws.length;
-    if(isDry){
-      tips.push(`<div class="bluff-tip"><strong style="color:#ff9966">🎭 Position Bluff Spot</strong><br>
-        Dry, rainbow board — nobody has draws, and opponent weakness (checking to you) signals they missed. A 40–55% pot-sized bet here wins the pot outright most of the time.
-        This is pure fold equity: you profit if they fold more than ${Math.round(100*(G.pot>0?G.pot/(G.pot*2):0.5))}% of the time — which they will on a board this disconnected.</div>`);
-    } else if(draws.length>0){
-      tips.push(`<div class="bluff-tip"><strong style="color:#ffaa44">🎭 Semi-Bluff Opportunity</strong><br>
-        You have ${draws[0].name} (${draws[0].outs} outs ≈ ${draws[0].outs*(G.community.length<=3?4:2)}% equity). Betting here is a semi-bluff — you can win by either (1) making them fold, or (2) completing your draw. Two ways to win beats one.</div>`);
+  const draws = detectDraws(p.holeCards, G.community);
+  const callCost = Math.max(0, G.currentBet - p.roundBet);
+  const pos = getPosition();
+  const tips = [];
+
+  // Position bluff on dry board
+  const allChecked = G.phaseActions.filter(a => a.idx !== 0).every(a => a.action === 'check');
+  const boardSuitCounts = G.community.reduce((m, card) => { m[card.suit] = (m[card.suit] || 0) + 1; return m; }, {});
+  const isDryBoard = Math.max(...Object.values(boardSuitCounts)) <= 2 && G.community.length >= 3;
+
+  if (callCost === 0 && (pos === 'BTN' || pos === 'UTG') && h.rank <= 1 && G.community.length >= 3) {
+    if (isDryBoard && !draws.length) {
+      tips.push('<div class="bluff-tip"><strong style="color:#ff9966">\ud83c\udfad Position Bluff Spot</strong><br>' +
+        'Dry, rainbow board \u2014 nobody has draws. A 40\u201355% pot-sized bet wins the pot outright most of the time.</div>');
+    } else if (draws.length > 0) {
+      tips.push('<div class="bluff-tip"><strong style="color:#ffaa44">\ud83c\udfad Semi-Bluff Opportunity</strong><br>' +
+        'You have ' + esc(draws[0].name) + ' (' + draws[0].outs + ' outs). Betting is a semi-bluff \u2014 win by fold or by completing your draw.</div>');
     }
   }
 
-  // Semi-bluff raise: have draw, facing a bet
-  if(draws.length>0&&call>0&&h.rank<=1){
-    const d=draws[0];
-    const raiseEV=`fold equity + ${d.outs*(G.community.length<=3?4:2)}% draw equity`;
-    tips.push(`<div class="bluff-tip"><strong style="color:#ffaa44">🎭 Semi-Bluff Raise</strong><br>
-      You have ${d.name} (${d.outs} outs). Instead of just calling, consider <strong>raising</strong>.
-      You win two ways: opponent folds now, OR your draw completes. Combined EV = ${raiseEV}.
-      Pros raise draws; amateurs only call them. Raising also protects your equity from being priced out on later streets.</div>`);
+  // Semi-bluff raise with draw
+  if (draws.length > 0 && callCost > 0 && h.rank <= 1) {
+    const d = draws[0];
+    tips.push('<div class="bluff-tip"><strong style="color:#ffaa44">\ud83c\udfad Semi-Bluff Raise</strong><br>' +
+      'You have ' + esc(d.name) + ' (' + d.outs + ' outs). Instead of just calling, consider <strong>raising</strong>. ' +
+      'You win two ways: opponent folds now, OR your draw completes.</div>');
   }
 
-  // C-bet opportunity: you raised pre-flop, everyone checked to you
-  const raisedPre=G.handActions.some(a=>a.idx===0&&a.phase==='preflop'&&(a.action==='raise'||a.action==='allin'));
-  if(raisedPre&&G.phase==='flop'&&call===0&&G.phaseActions.filter(a=>a.idx!==0).every(a=>a.action==='check')){
-    tips.push(`<div class="bluff-tip"><strong style="color:#66aaff">📡 C-Bet Opportunity</strong><br>
-      You raised pre-flop and everyone checked to you on the flop. A <strong>continuation bet (c-bet)</strong> of 50–70% pot wins here ~60% of the time — your opponents miss flops two-thirds of the time just like you do.
-      Bet to take the pot now rather than waiting for a card you might not get.</div>`);
+  // C-bet opportunity
+  const raisedPre = G.handActions.some(a => a.idx === 0 && a.phase === 'preflop' && (a.action === 'raise' || a.action === 'allin'));
+  if (raisedPre && G.phase === 'flop' && callCost === 0 && G.phaseActions.filter(a => a.idx !== 0).every(a => a.action === 'check')) {
+    tips.push('<div class="bluff-tip"><strong style="color:#66aaff">\ud83d\udce1 C-Bet Opportunity</strong><br>' +
+      'You raised pre-flop and everyone checked to you. A <strong>continuation bet</strong> of 50\u201370% pot wins ~60% of the time.</div>');
   }
 
-  if(!tips.length)return'';
-  return sec('Bluff &amp; Aggression Spots',tips.join(''),'c-bluff');
+  if (!tips.length) return '';
+  return coachSection('Bluff &amp; Aggression Spots', tips.join(''), 'c-bluff');
 }
 
-// ── RECOMMENDATION ────────────────────────────────────────────────────
-function recommendHTML(){
-  const p=G.players[0],comm=G.community;
-  const call=Math.max(0,G.currentBet-p.roundBet),canCheck=call===0,isPreflop=comm.length===0;
-  const pos=getPosition(),tier=preflopTier(p.holeCards),eq=estimateEquity();
-  const potOddsRatio=call>0?call/(G.pot+call):0,profitable=eq>=potOddsRatio;
-  const isHU=activePlayers().length<=2;
-  let action='',cls='',why='';
+// -- Recommendation --
+function recommendHTML() {
+  const p = G.players[0];
+  const comm = G.community;
+  const callCost = Math.max(0, G.currentBet - p.roundBet);
+  const canCheck = callCost === 0;
+  const isPreflop = comm.length === 0;
+  const pos = getPosition();
+  const tier = preflopTier(p.holeCards);
+  const eq = estimateEquity();
+  const potOddsRatio = callCost > 0 ? callCost / (G.pot + callCost) : 0;
+  const profitable = eq >= potOddsRatio;
+  const isHU = activePlayers().length <= 2;
+  let action = '', cls = '', why = '';
 
-  if(isPreflop){
-    if(isHU){
-      // Heads-up: dramatically looser ranges
-      if(canCheck){
-        if(tier>=3){action='RAISE';cls='rec-raise';why=`Heads-up with ${holeCardName(p.holeCards)}: raise every time. Force your opponent to make decisions. Checking here gives up initiative — never do that with a decent hand heads-up.`;}
-        else{action='CHECK';cls='rec-check';why=`Weak hand in the BB heads-up — check and see the flop for free. Even weak hands can win heads-up, and you're getting a free card.`;}
-      }else{
-        if(tier>=4){action='RAISE';cls='rec-raise';why=`Heads-up, 3-bet this hand. ${holeCardName(p.holeCards)} is very strong — re-raise to build the pot and apply maximum pressure.`;}
-        else if(tier>=2){action='CALL';cls='rec-call';why=`Heads-up, calling is correct with ${holeCardName(p.holeCards)}. Any pair, any ace, any two decent cards are worth seeing a flop heads-up. You only need ~33% equity to break even.`;}
-        else{action='CALL';cls='rec-call';why=`Even weak hands are borderline calls heads-up. Position and aggression matter more than card strength in a 1v1 battle.`;}
+  if (isPreflop) {
+    if (isHU) {
+      if (canCheck) {
+        if (tier >= 3) { action = 'RAISE'; cls = 'rec-raise'; why = 'Heads-up with ' + esc(holeCardName(p.holeCards)) + ': raise every time. Force your opponent to make decisions.'; }
+        else { action = 'CHECK'; cls = 'rec-check'; why = 'Weak hand in the BB heads-up \u2014 check and see the flop for free.'; }
+      } else {
+        if (tier >= 4) { action = 'RAISE'; cls = 'rec-raise'; why = 'Heads-up, 3-bet this hand. ' + esc(holeCardName(p.holeCards)) + ' is very strong \u2014 re-raise to build the pot.'; }
+        else if (tier >= 2) { action = 'CALL'; cls = 'rec-call'; why = 'Heads-up, calling is correct. Any decent cards are worth seeing a flop heads-up.'; }
+        else { action = 'CALL'; cls = 'rec-call'; why = 'Even weak hands are borderline calls heads-up. Position and aggression matter more than card strength.'; }
       }
-    }else{
-      if(canCheck){
-        if(tier>=3){action='RAISE';cls='rec-raise';why=`${holeCardName(p.holeCards)} is a ${TIER_INFO[tier].label.toLowerCase()} hand — raise to ${CUR_BB*3}–${CUR_BB*4} to build the pot and push opponents to make costly mistakes.`;}
-        else{action='CHECK';cls='rec-check';why=`Your hand is marginal but seeing the flop for free is always correct. Never fold when you can check — the flop might give you something unexpected.`;}
-      }else{
-        if(tier===5){action='RAISE';cls='rec-raise';why=`${holeCardName(p.holeCards)} is a premium hand — 3-bet (re-raise)! Build a huge pot with your best hands. Never flat-call with monsters pre-flop — you want the pot massive and the field narrow.`;}
-        else if(tier===4){action=call>CUR_BB*3?'CALL':'RAISE';cls=call>CUR_BB*3?'rec-call':'rec-raise';why=call>CUR_BB*3?`Strong hand, but a big raise signals strength. Calling (flat-calling) is fine — you'll get more information from the flop.`:`${holeCardName(p.holeCards)} is strong. Raise to ~3× the current bet to charge opponents with drawing hands.`;}
-        else if(tier===3){action=call>CUR_BB*3?'FOLD':'CALL';cls=call>CUR_BB*3?'rec-fold':'rec-call';why=call>CUR_BB*3?`A large raise suggests a strong opponent hand. Your playable hand doesn't have enough equity to call big — save your chips.`:`${holeCardName(p.holeCards)} has solid potential. Calling a small raise to see the flop${pos==='BTN'?' with position advantage':''} is correct.`;}
-        else if(tier===2){action=call>CUR_BB*2||pos==='UTG'?'FOLD':'CALL';cls=action==='FOLD'?'rec-fold':'rec-call';why=action==='FOLD'?`Marginal hand${call>CUR_BB*2?' facing a sizeable raise':' in early position'}. The math doesn't support investing more chips — fold and wait for a better spot.`:`Small price to speculate with a marginal hand in position.`;}
-        else{action='FOLD';cls='rec-fold';why=`${holeCardName(p.holeCards)} is a weak hand facing a raise. Folding is the disciplined choice — great players fold often to preserve chips for favorable spots.`;}
+    } else {
+      if (canCheck) {
+        if (tier >= 3) { action = 'RAISE'; cls = 'rec-raise'; why = esc(holeCardName(p.holeCards)) + ' is a ' + TIER_INFO[tier].label.toLowerCase() + ' hand \u2014 raise to build the pot.'; }
+        else { action = 'CHECK'; cls = 'rec-check'; why = 'Your hand is marginal but seeing the flop for free is always correct.'; }
+      } else {
+        if (tier === 5) { action = 'RAISE'; cls = 'rec-raise'; why = esc(holeCardName(p.holeCards)) + ' is premium \u2014 3-bet! Never flat-call with monsters pre-flop.'; }
+        else if (tier === 4) {
+          action = callCost > CUR_BB * 3 ? 'CALL' : 'RAISE';
+          cls = callCost > CUR_BB * 3 ? 'rec-call' : 'rec-raise';
+          why = callCost > CUR_BB * 3 ? 'Strong hand, but a big raise signals strength. Calling is fine.' : esc(holeCardName(p.holeCards)) + ' is strong. Raise to ~3\u00d7 the current bet.';
+        }
+        else if (tier === 3) {
+          action = callCost > CUR_BB * 3 ? 'FOLD' : 'CALL';
+          cls = callCost > CUR_BB * 3 ? 'rec-fold' : 'rec-call';
+          why = callCost > CUR_BB * 3 ? 'A large raise suggests strength. Save your chips.' : esc(holeCardName(p.holeCards)) + ' has solid potential. Calling to see the flop is correct.';
+        }
+        else if (tier === 2) {
+          action = callCost > CUR_BB * 2 || pos === 'UTG' ? 'FOLD' : 'CALL';
+          cls = action === 'FOLD' ? 'rec-fold' : 'rec-call';
+          why = action === 'FOLD' ? 'Marginal hand facing pressure. Fold and wait for a better spot.' : 'Small price to speculate with a marginal hand in position.';
+        }
+        else { action = 'FOLD'; cls = 'rec-fold'; why = esc(holeCardName(p.holeCards)) + ' is weak facing a raise. Folding is the disciplined choice.'; }
       }
     }
-  }else{
-    const mh=bestHand(p.holeCards,comm),draws=detectDraws(p.holeCards,comm),rank=mh.rank,hasDraw=draws.length>0;
-    const totalOuts=draws.reduce((s,d)=>s+d.outs,0);
-    if(rank>=6){action='RAISE';cls='rec-raise';why=`${HN[rank]} is a monster hand. Raise big or go all-in — there are almost no hands that beat you. Consider a check-raise if an opponent is likely to bet first.`;}
-    else if(rank>=4){
-      if(canCheck){action='CHECK';cls='rec-check';why=`${HN[rank]} is powerful. Consider a <strong>check-raise</strong>: check to invite an opponent's bet, then raise when they fire. This disguises your strength and builds more value than betting out would.`;}
-      else{action='RAISE';cls='rec-raise';why=`${HN[rank]} is a powerful hand. Raise 60–80% of the pot for value — you want opponents with pairs and draws to call.`;}
-    }
-    else if(rank===3){action='RAISE';cls='rec-raise';why=`Three of a kind is excellent. Raise to build the pot. You beat all pairs and two pairs — just watch for straight and flush possibilities on the board.`;}
-    else if(rank===2){
-      if(canCheck){action='RAISE';cls='rec-raise';why=`Two pair — bet 50–70% of pot to build value and make drawing hands pay. Giving free cards to draws can be very costly.`;}
-      else if(profitable){action='CALL';cls='rec-call';why=`Two pair is solid and pot odds are in your favor. Call — but watch for opponents raising big (could mean a straight or flush).`;}
-      else{action='CALL';cls='rec-call';why=`Two pair is good enough to call here despite the math being slightly thin.`;}
-    }else if(rank===1){
-      const isTopPair=mh.key[0]>=G.community.map(card=>card.value).sort((a,b)=>b-a)[0];
-      const goodKicker=mh.key[1]>=12;
-      if(canCheck){
-        if(isTopPair&&goodKicker){action='RAISE';cls='rec-raise';why=`Top pair with a strong kicker (${VN[mh.key[1]]}) — bet for value. You likely have the best hand. Build the pot now.`;}
-        else if(isTopPair){action='CHECK';cls='rec-check';why=`Top pair but weak kicker (${VN[mh.key[1]]}). Check to keep the pot manageable — your kicker is a vulnerability.`;}
-        else{action='CHECK';cls='rec-check';why=`Middle/bottom pair is marginal. Check to keep the pot small and see what opponents do.`;}
-      }else if(isTopPair&&goodKicker&&profitable){action='CALL';cls='rec-call';why=`Top pair, strong kicker. Pot odds support calling. Your hand is strong enough to continue.`;}
-      else if(hasDraw&&profitable){action='CALL';cls='rec-call';why=`Weak pair + ${draws[0].name} (${draws[0].outs} outs). Combined equity justifies the call — or consider raising as a semi-bluff.`;}
-      else{action='FOLD';cls='rec-fold';why=`Weak pair facing a bet — you're likely behind. Fold and save your chips for a better spot.`;}
-    }else{
-      if(canCheck){action='CHECK';cls='rec-check';why=`No pair — see the next card for free. Never invest chips with just high cards unless you have a strong draw or a clear bluffing opportunity.`;}
-      else if(hasDraw&&profitable){action='CALL';cls='rec-call';why=`No pair, but your ${draws[0].name} (${draws[0].outs} outs, ~${Math.round(draws[0].outs*(comm.length<=3?4:2))}% equity) justifies a call given these pot odds — or raise as a semi-bluff.`;}
-      else{action='FOLD';cls='rec-fold';why=`High card only, no strong draw, pot odds unfavorable. Fold — this is the disciplined play.`;}
+  } else {
+    const mh = bestHand(p.holeCards, comm);
+    const draws = detectDraws(p.holeCards, comm);
+    const rank = mh.rank;
+    const hasDraw = draws.length > 0;
+
+    if (rank >= 6) {
+      action = 'RAISE'; cls = 'rec-raise';
+      why = HAND_NAMES[rank] + ' is a monster. Raise big or go all-in. Consider a check-raise if an opponent is likely to bet first.';
+    } else if (rank >= 4) {
+      if (canCheck) { action = 'CHECK'; cls = 'rec-check'; why = HAND_NAMES[rank] + ' is powerful. Consider a <strong>check-raise</strong> to disguise your strength.'; }
+      else { action = 'RAISE'; cls = 'rec-raise'; why = HAND_NAMES[rank] + ' is powerful. Raise 60\u201380% of the pot for value.'; }
+    } else if (rank === 3) {
+      action = 'RAISE'; cls = 'rec-raise';
+      why = 'Three of a kind is excellent. Raise to build the pot.';
+    } else if (rank === 2) {
+      if (canCheck) { action = 'RAISE'; cls = 'rec-raise'; why = 'Two pair \u2014 bet 50\u201370% of pot to build value and charge draws.'; }
+      else if (profitable) { action = 'CALL'; cls = 'rec-call'; why = 'Two pair is solid and pot odds favor calling.'; }
+      else { action = 'CALL'; cls = 'rec-call'; why = 'Two pair is good enough to call here.'; }
+    } else if (rank === 1) {
+      const isTopPair = mh.key[0] >= G.community.map(card => card.value).sort((a, b) => b - a)[0];
+      const goodKicker = mh.key[1] >= 12;
+      if (canCheck) {
+        if (isTopPair && goodKicker) { action = 'RAISE'; cls = 'rec-raise'; why = 'Top pair with a strong kicker (' + VALUE_SHORT[mh.key[1]] + ') \u2014 bet for value.'; }
+        else if (isTopPair) { action = 'CHECK'; cls = 'rec-check'; why = 'Top pair but weak kicker. Check to keep the pot manageable.'; }
+        else { action = 'CHECK'; cls = 'rec-check'; why = 'Middle/bottom pair is marginal. Check and see what opponents do.'; }
+      } else if (isTopPair && goodKicker && profitable) { action = 'CALL'; cls = 'rec-call'; why = 'Top pair, strong kicker. Pot odds support calling.'; }
+      else if (hasDraw && profitable) { action = 'CALL'; cls = 'rec-call'; why = 'Weak pair + ' + esc(draws[0].name) + '. Combined equity justifies the call.'; }
+      else { action = 'FOLD'; cls = 'rec-fold'; why = 'Weak pair facing a bet \u2014 you\'re likely behind. Fold and save chips.'; }
+    } else {
+      if (canCheck) { action = 'CHECK'; cls = 'rec-check'; why = 'No pair \u2014 see the next card for free.'; }
+      else if (hasDraw && profitable) { action = 'CALL'; cls = 'rec-call'; why = 'No pair, but your ' + esc(draws[0].name) + ' (~' + Math.round(draws[0].outs * (comm.length <= 3 ? 4 : 2)) + '% equity) justifies a call.'; }
+      else { action = 'FOLD'; cls = 'rec-fold'; why = 'High card only, no strong draw. Fold \u2014 this is the disciplined play.'; }
     }
   }
 
   // Scenario-specific addendum
-  let extra='';
-  if(G.scenario){
-    const sc=G.scenario;
-    if(sc.id==='pocket_jacks'&&comm.length>0&&bestHand(p.holeCards,comm).rank<=1&&G.community.some(c=>c.value>=12))
-      extra=` <em>This is the classic Pocket Jacks dilemma</em> — an Ace or King hit the board and your overpair is likely beaten. Discipline to fold is the elite skill here.`;
-    else if(sc.id==='flush_draw'&&detectDraws(p.holeCards,comm).some(d=>d.name.includes('Flush')))
-      extra=` <em>This is the Flush Draw lesson</em> — use the pot odds calculation above to make the mathematically correct call or fold, regardless of emotion.`;
-    else if(sc.id==='monster_draw'&&detectDraws(p.holeCards,comm).length>=2)
-      extra=` <em>Combo draw!</em> With ~15 outs you are an equity FAVORITE — most players check here, but betting or raising is actually correct.`;
-    else if(sc.id==='set_mining'&&bestHand(p.holeCards,comm).rank===3)
-      extra=` <em>You flopped the set!</em> Now the question is slow play (check to trap) vs. fast play (bet to build the pot). With a wet board, betting is usually better.`;
-    else if(sc.id==='weak_kicker'&&comm.length>0&&bestHand(p.holeCards,comm).rank===1)
-      extra=` <em>Kicker trap scenario</em> — you have top pair but your kicker could be dominated. If Alice shows aggression, she very likely has the same pair with a better side card.`;
-    else if(sc.id==='bluff_catch'&&G.phase==='river')
-      extra=` <em>Bluff catcher moment.</em> Ask: what percentage of Alice's bets here are bluffs? If more than the pot odds require (${Math.round(Math.max(0,G.currentBet-p.roundBet)/(G.pot+Math.max(0,G.currentBet-p.roundBet))*100)}%), calling is correct.`;
-    else if(sc.id==='pure_bluff'&&comm.length>0&&bestHand(p.holeCards,comm).rank===0)
-      extra=` <em>Pure bluff spot!</em> You have air on a dry board. If everyone has checked to you, a bet of 40–55% of the pot exploits fold equity — this is how professionals steal pots.`;
-    else if(sc.id==='semi_bluff_raise'&&detectDraws(p.holeCards,comm).length>0)
-      extra=` <em>Semi-bluff moment.</em> Don't just call with the draw — RAISE. You win if Alice folds OR if your flush completes. Two ways to win is far stronger than one.`;
-    else if(sc.id==='three_bet'&&comm.length===0&&tier>=4)
-      extra=` <em>3-bet scenario!</em> Alice raised — re-raise (3-bet) with your strong hand. Never flat-call with KK or AA pre-flop. Build the pot when you have the best hand.`;
-    else if(sc.id==='check_raise_trap'&&bestHand(p.holeCards,comm).rank>=4)
-      extra=` <em>Check-raise spot!</em> You have a monster. CHECK first — invite Alice's continuation bet — then RAISE big. Let her think she's winning before you spring the trap.`;
+  let extra = '';
+  if (G.scenario) {
+    const sc = G.scenario;
+    if (sc.id === 'pocket_jacks' && comm.length > 0 && bestHand(p.holeCards, comm).rank <= 1 && G.community.some(card => card.value >= 12))
+      extra = ' <em>Classic Pocket Jacks dilemma</em> \u2014 an overcard hit and your overpair is likely beaten. Discipline to fold is the elite skill.';
+    else if (sc.id === 'flush_draw' && detectDraws(p.holeCards, comm).some(d => d.name.includes('Flush')))
+      extra = ' <em>Flush Draw lesson</em> \u2014 use pot odds to make the mathematically correct decision.';
+    else if (sc.id === 'monster_draw' && detectDraws(p.holeCards, comm).length >= 2)
+      extra = ' <em>Combo draw!</em> With ~15 outs you are the FAVORITE \u2014 betting or raising is correct.';
+    else if (sc.id === 'set_mining' && bestHand(p.holeCards, comm).rank === 3)
+      extra = ' <em>You flopped the set!</em> Slow play (check to trap) vs. fast play (bet). With a wet board, betting is usually better.';
+    else if (sc.id === 'weak_kicker' && comm.length > 0 && bestHand(p.holeCards, comm).rank === 1)
+      extra = ' <em>Kicker trap</em> \u2014 you have top pair but your kicker could be dominated.';
+    else if (sc.id === 'bluff_catch' && G.phase === 'river')
+      extra = ' <em>Bluff catcher moment.</em> If opponent bluffs more than ' + Math.round(Math.max(0, G.currentBet - p.roundBet) / (G.pot + Math.max(0, G.currentBet - p.roundBet)) * 100) + '% of the time, calling is correct.';
+    else if (sc.id === 'pure_bluff' && comm.length > 0 && bestHand(p.holeCards, comm).rank === 0)
+      extra = ' <em>Pure bluff spot!</em> You have air on a dry board. A 40\u201355% pot bet exploits fold equity.';
+    else if (sc.id === 'semi_bluff_raise' && detectDraws(p.holeCards, comm).length > 0)
+      extra = ' <em>Semi-bluff moment.</em> Don\'t just call \u2014 RAISE. Two ways to win beats one.';
+    else if (sc.id === 'three_bet' && comm.length === 0 && tier >= 4)
+      extra = ' <em>3-bet scenario!</em> Alice raised \u2014 re-raise with your strong hand. Build the pot.';
+    else if (sc.id === 'check_raise_trap' && bestHand(p.holeCards, comm).rank >= 4)
+      extra = ' <em>Check-raise spot!</em> CHECK first \u2014 invite the bet \u2014 then RAISE big.';
   }
 
-  return sec('💡 Recommended Move',
-    `<div class="rec-action rec-${cls.replace('rec-','')}">${action}</div><div class="rec-why">${why}${extra}</div>`,'c-rec');
+  return coachSection('\ud83d\udca1 Recommended Move',
+    '<div class="rec-action ' + cls + '">' + esc(action) + '</div><div class="rec-why">' + why + extra + '</div>', 'c-rec');
 }
 
-function buildCoachHTML(){
-  const expert=G_DIFF==='expert';
-  return[
-    !expert&&scenarioHTML(),
+function buildCoachHTML() {
+  const expert = G_DIFF === 'expert';
+  return [
+    !expert && scenarioHTML(),
     stageAdviceHTML(),
-    !expert&&recommendHTML(),
+    !expert && recommendHTML(),
     preflopHandHTML(),
     madeHandHTML(),
     drawsHTML(),
-    !expert&&bluffOpportunityHTML(),
+    !expert && bluffOpportunityHTML(),
     positionHTML(),
     potOddsHTML(),
     opponentReadsHTML(),
   ].filter(Boolean).join('');
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// =====================================================================
+// KEYBOARD CONTROLS
+// =====================================================================
+document.addEventListener('keydown', function(e) {
+  // Don't intercept when typing in an input field
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  // During human's turn
+  if (G.awaitingAction) {
+    const p = G.players[0];
+    const callCost = G.currentBet - p.roundBet;
+
+    if (e.key === 'f' || e.key === 'F') { act(0, 'fold', 0); e.preventDefault(); }
+    else if (e.key === 'c' || e.key === 'C') {
+      if (callCost === 0) act(0, 'check', 0);
+      else act(0, 'call', 0);
+      e.preventDefault();
+    }
+    else if (e.key === 'r' || e.key === 'R') {
+      if (p.chips > callCost) {
+        act(0, 'raise', validateRaiseAmount(+document.getElementById('r-input').value));
+        e.preventDefault();
+      }
+    }
+    else if (e.key === 'a' || e.key === 'A') {
+      if (p.chips > 0) { act(0, 'allin', 0); e.preventDefault(); }
+    }
+    return;
+  }
+
+  // Overlay shown (hand finished)
+  if (G.phase === 'done' && document.getElementById('overlay').style.display === 'block') {
+    if (e.key === 'n' || e.key === 'N' || e.key === 'Enter' || e.key === ' ') {
+      if (G.players[0].chips <= 0) { closeOverlay(); startGame(); }
+      else nextHand();
+      e.preventDefault();
+    }
+    return;
+  }
+
+  // Waiting to start
+  if (G.phase === 'waiting') {
+    if (e.key === 'd' || e.key === 'D' || e.key === 'Enter' || e.key === ' ') {
+      startGame();
+      e.preventDefault();
+    }
+  }
+});
+
+// =====================================================================
 // BOOT
-// ═══════════════════════════════════════════════════════════════════
-resetGame();render();
+// =====================================================================
+resetGame();
+render();
 </script>
 </body>
 </html>
