@@ -92,7 +92,6 @@
     .rec-why{font-size:.8rem;color:#ccc;line-height:1.6;}
     .pill{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:10px;margin:2px 2px 0 0;}
     .pill-good{background:rgba(0,200,100,.15);color:#00dd88;border:1px solid rgba(0,200,100,.3);}
-    .pill-warn{background:rgba(255,180,0,.12);color:#ffcc44;border:1px solid rgba(255,180,0,.25);}
     .pill-bad{background:rgba(255,60,60,.12);color:#ff6666;border:1px solid rgba(255,60,60,.25);}
     .stage-box{padding:7px 10px;border-radius:6px;font-size:.8rem;line-height:1.55;}
     .stage-hu{background:rgba(255,80,50,.08);border:1px solid rgba(255,80,50,.25);}
@@ -173,14 +172,14 @@
         <input type="number" id="r-input" min="20" max="1000" value="40">
       </div>
       <div id="btns">
-        <button class="btn btn-start" id="btn-start" onclick="startGame()">Deal Cards</button>
+        <button class="btn btn-start" id="btn-start">Deal Cards</button>
       </div>
       <div id="kb-help">F fold &middot; C check/call &middot; R raise &middot; A all-in</div>
     </div>
     <div id="overlay">
       <h2 id="ov-title">Winner!</h2>
       <p id="ov-body"></p>
-      <button class="btn btn-next" id="ov-btn" onclick="nextHand()">Next Hand</button>
+      <button class="btn btn-next" id="ov-btn">Next Hand</button>
     </div>
   </div>
   </div>
@@ -189,15 +188,15 @@
     <div class="coach-hdr">
       <span>&#127891;</span> Poker Coach
       <div class="diff-toggle">
-        <button class="diff-btn active" id="diff-beginner" onclick="setDiff('beginner')">Beginner</button>
-        <button class="diff-btn" id="diff-expert" onclick="setDiff('expert')">Expert</button>
+        <button class="diff-btn active" id="diff-beginner">Beginner</button>
+        <button class="diff-btn" id="diff-expert">Expert</button>
       </div>
     </div>
     <div id="stats-bar" style="display:none"></div>
     <div id="coach-idle">Deal your first hand and I'll guide you through every decision — explaining the odds, your position, what the opponents' bets mean, and the best move to make.</div>
     <div id="coach-body" style="display:none"></div>
     <div id="history-section" style="display:none">
-      <div id="history-toggle" onclick="toggleHistory()">&#128218; Hand History <span id="history-arrow">&#9660;</span></div>
+      <div id="history-toggle">&#128218; Hand History <span id="history-arrow">&#9660;</span></div>
       <div id="history-body" style="display:none"></div>
     </div>
   </div>
@@ -214,7 +213,7 @@ const VALUE_SHORT  = { 2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',10:'10',1
 const VALUE_NAME   = { 2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',11:'Jack',12:'Queen',13:'King',14:'Ace' };
 const PLURAL_NAME  = { 2:'Twos',3:'Threes',4:'Fours',5:'Fives',6:'Sixes',7:'Sevens',8:'Eights',9:'Nines',10:'Tens',11:'Jacks',12:'Queens',13:'Kings',14:'Aces' };
 const HAND_NAMES   = ['High Card','One Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush'];
-const SUIT_KEY     = { s: 'spades', h: 'hearts', d: 'diamonds', c: 'clubs' };
+// 4-player table (You, Alice, Bob, Carol) — game logic assumes exactly 4 seats
 const PLAYER_COUNT = 4;
 const STARTING_CHIPS = 1000;
 const BLIND_SCHEDULE = [[10,20],[15,30],[25,50],[40,80],[75,150],[100,200]];
@@ -223,7 +222,8 @@ const HANDS_PER_BLIND_LEVEL = 5;
 let CUR_SB = 10;
 let CUR_BB = 20;
 
-// Shorthand for scenario card definitions
+// Shorthand for scenario card definitions (SUIT_KEY only used here and in c())
+const SUIT_KEY = { s: 'spades', h: 'hearts', d: 'diamonds', c: 'clubs' };
 function c(v, s) { return { value: v, suit: SUIT_KEY[s] }; }
 
 // HTML-escape for safe innerHTML insertion
@@ -393,8 +393,10 @@ function createDeck() {
 }
 
 function shuffle(arr) {
+  const rnd = new Uint32Array(arr.length);
+  crypto.getRandomValues(rnd);
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.random() * (i + 1) | 0;
+    const j = rnd[i] % (i + 1);
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
@@ -404,6 +406,8 @@ function buildSeededDeck(humanHole, oppHole, community) {
   const specified = [...humanHole, ...(oppHole || []), ...(community || [])];
   const isSpecified = (card) => specified.some(s => s.value === card.value && s.suit === card.suit);
   const pool = shuffle(createDeck().filter(card => !isSpecified(card)));
+  // Sort weak cards to front so Bob/Carol get weak hands in scenarios
+  pool.sort((a, b) => a.value - b.value);
   let pi = 0;
   const take = () => {
     if (pi >= pool.length) throw new Error('Deck exhausted during seeding');
@@ -491,7 +495,8 @@ function compareHands(a, b) {
 // GAME STATE
 // =====================================================================
 let G = {};
-let G_DIFF = localStorage.getItem('poker-diff') || 'beginner';
+const storedDiff = localStorage.getItem('poker-diff');
+let G_DIFF = (storedDiff === 'beginner' || storedDiff === 'expert') ? storedDiff : 'beginner';
 
 function createPlayer(name, isHuman) {
   return {
@@ -509,7 +514,7 @@ function resetGame() {
   CUR_BB = 20;
   G = {
     players: [createPlayer('You', true), createPlayer('Alice', false), createPlayer('Bob', false), createPlayer('Carol', false)],
-    deck: [], community: [], pot: 0,
+    deck: [], community: [], pot: 0, sidePots: [],
     phase: 'waiting',
     dealerIdx: Math.floor(Math.random() * PLAYER_COUNT),
     sbIdx: -1, bbIdx: -1, currentIdx: -1,
@@ -569,7 +574,11 @@ function startGame() { resetGame(); startHand(); }
 // Find next player who hasn't folded and has chips (for dealer/blind rotation)
 function nextNonFolded(from) {
   let i = (from + 1) % PLAYER_COUNT;
-  while (G.players[i].folded || G.players[i].chips <= 0) i = (i + 1) % PLAYER_COUNT;
+  let loops = 0;
+  while (G.players[i].folded || G.players[i].chips <= 0) {
+    i = (i + 1) % PLAYER_COUNT;
+    if (++loops >= PLAYER_COUNT) return from;
+  }
   return i;
 }
 
@@ -579,7 +588,7 @@ function nextCanAct(from) {
   const start = i;
   while (G.players[i].folded || G.players[i].allIn) {
     i = (i + 1) % PLAYER_COUNT;
-    if (i === start) break;
+    if (i === start) return -1;
   }
   return i;
 }
@@ -742,6 +751,7 @@ function validateRaiseAmount(amount) {
 }
 
 function act(idx, action, raiseTotal) {
+  if (G.actQueue.length === 0 || G.actQueue[0] !== idx) return;
   const p = G.players[idx];
   G.actQueue.shift();
   hideButtons();
@@ -793,6 +803,7 @@ function act(idx, action, raiseTotal) {
 
   G.handActions.push({ idx, phase: G.phase, action, amount: G.currentBet });
   G.phaseActions.push({ idx, phase: G.phase, action, amount: G.currentBet });
+  G.sidePots = calculateSidePots();
   setMsg(msg);
 
   // Rebuild action queue after a raise so remaining players can respond
@@ -824,6 +835,7 @@ function advancePhase() {
   G.currentBet = 0;
   G.minRaise = CUR_BB;
   G.phaseActions = [];
+  G.sidePots = calculateSidePots();
 
   if (G.phase === 'preflop') {
     G.phase = 'flop';
@@ -847,7 +859,9 @@ function advancePhase() {
   const active = G.players.filter(p => !p.folded);
   const canAct = active.filter(p => !p.allIn);
   if (canAct.length <= 1) { setTimeout(advancePhase, 900); return; }
-  buildActionQueue(nextCanAct(G.dealerIdx));
+  const startFrom = nextCanAct(G.dealerIdx);
+  if (startFrom === -1) { setTimeout(advancePhase, 900); return; }
+  buildActionQueue(startFrom);
   setTimeout(tick, 500);
 }
 
@@ -970,7 +984,7 @@ function setMsg(text) { document.getElementById('msg').textContent = text; }
 function cardHTML(card, faceDown) {
   if (faceDown) return '<div class="card card-back"></div>';
   const isRed = card.suit === 'hearts' || card.suit === 'diamonds';
-  const v = esc(VALUE_SHORT[card.value]);
+  const v = VALUE_SHORT[card.value];
   const s = SUIT_SYMBOLS[card.suit];
   return '<div class="card ' + (isRed ? 'red' : 'black') + '">' +
     '<div class="card-corner">' + v + '<br>' + s + '</div>' +
@@ -994,7 +1008,7 @@ function render() {
 
   // Side pot indicator
   const sidePotEl = document.getElementById('side-pots');
-  const sidePots = (G.phase !== 'waiting' && G.phase !== 'done') ? calculateSidePots() : [];
+  const sidePots = G.sidePots || [];
   if (sidePots.length > 1) {
     sidePotEl.textContent = sidePots.map((pot, i) =>
       (i === 0 ? 'Main' : 'Side ' + i) + ': $' + pot.amount
@@ -1038,14 +1052,15 @@ function render() {
   }
 }
 
+let overlayAction = nextHand;
 function showOverlay(title, body) {
   document.getElementById('ov-title').textContent = title;
   document.getElementById('ov-body').textContent = body;
   document.getElementById('ov-btn').textContent = 'Next Hand';
-  document.getElementById('ov-btn').onclick = nextHand;
+  overlayAction = nextHand;
   if (G.players[0].chips <= 0) {
     document.getElementById('ov-btn').textContent = 'New Game';
-    document.getElementById('ov-btn').onclick = function() { closeOverlay(); startGame(); };
+    overlayAction = function() { closeOverlay(); startGame(); };
   }
   document.getElementById('overlay').style.display = 'block';
 }
@@ -1057,22 +1072,22 @@ function showButtons() {
   const callCost = G.currentBet - p.roundBet;
   const canCheck = callCost === 0;
 
-  let html = '<button class="btn btn-fold" onclick="act(0,\'fold\',0)">Fold</button>';
+  let html = '<button class="btn btn-fold" data-action="fold">Fold</button>';
 
   if (canCheck) {
-    html += '<button class="btn btn-check" onclick="act(0,\'check\',0)">Check</button>';
+    html += '<button class="btn btn-check" data-action="check">Check</button>';
   } else {
     const amt = Math.min(callCost, p.chips);
-    html += '<button class="btn btn-call" onclick="act(0,\'call\',0)">' +
+    html += '<button class="btn btn-call" data-action="call">' +
       (p.chips <= callCost ? 'All-In $' + amt : 'Call $' + amt) + '</button>';
   }
 
   if (p.chips > callCost) {
-    html += '<button class="btn btn-raise" onclick="act(0,\'raise\',validateRaiseAmount(+document.getElementById(\'r-input\').value))">Raise</button>';
+    html += '<button class="btn btn-raise" data-action="raise">Raise</button>';
   }
 
   if (p.chips > 0 && (callCost === 0 || p.chips > callCost)) {
-    html += '<button class="btn btn-allin" onclick="act(0,\'allin\',0)">All-In</button>';
+    html += '<button class="btn btn-allin" data-action="allin">All-In</button>';
   }
 
   document.getElementById('btns').innerHTML = html;
@@ -1415,8 +1430,7 @@ function drawsHTML() {
 function estimateEquity() {
   const p = G.players[0];
   const comm = G.community;
-  const activeOpponents = G.players.filter(op => !op.folded && !op.human).length;
-  // More opponents = lower individual equity
+  const activeOpponents = G.players.filter(op => !op.folded && !op.human && (op.chips > 0 || op.allIn)).length;
   const opponentDiscount = Math.max(0.6, 1 - activeOpponents * 0.08);
 
   let eq;
@@ -1539,7 +1553,7 @@ function bluffOpportunityHTML() {
   const boardSuitCounts = G.community.reduce((m, card) => { m[card.suit] = (m[card.suit] || 0) + 1; return m; }, {});
   const isDryBoard = Math.max(...Object.values(boardSuitCounts)) <= 2 && G.community.length >= 3;
 
-  if (callCost === 0 && (pos === 'BTN' || pos === 'UTG') && h.rank <= 1 && G.community.length >= 3) {
+  if (callCost === 0 && (pos === 'BTN' || pos === 'UTG') && h.rank <= 1 && G.community.length >= 3 && allChecked) {
     if (isDryBoard && !draws.length) {
       tips.push('<div class="bluff-tip"><strong style="color:#ff9966">\ud83c\udfad Position Bluff Spot</strong><br>' +
         'Dry, rainbow board \u2014 nobody has draws. A 40\u201355% pot-sized bet wins the pot outright most of the time.</div>');
@@ -1749,8 +1763,26 @@ document.addEventListener('keydown', function(e) {
 });
 
 // =====================================================================
-// BOOT
+// EVENT DELEGATION & BOOT
 // =====================================================================
+document.getElementById('btn-start').addEventListener('click', startGame);
+document.getElementById('ov-btn').addEventListener('click', function() { overlayAction(); });
+document.getElementById('diff-beginner').addEventListener('click', function() { setDiff('beginner'); });
+document.getElementById('diff-expert').addEventListener('click', function() { setDiff('expert'); });
+document.getElementById('history-toggle').addEventListener('click', toggleHistory);
+
+// Delegate action button clicks
+document.getElementById('btns').addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  if (action === 'raise') {
+    act(0, 'raise', validateRaiseAmount(+document.getElementById('r-input').value));
+  } else {
+    act(0, action, 0);
+  }
+});
+
 resetGame();
 render();
 </script>
